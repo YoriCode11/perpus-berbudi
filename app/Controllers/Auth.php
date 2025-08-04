@@ -7,6 +7,32 @@ use CodeIgniter\Controller;
 
 class Auth extends BaseController
 {
+    public function index()
+    {
+        // Jika user sudah login, redirect ke halaman dashboard
+        if (session()->get('isLoggedIn')) {
+            return redirect()->to(base_url('dashboard'));
+        }
+
+        $data = [
+            'title' => 'Login',
+        ];
+        return view('auth/login', $data);
+    }
+
+    public function processLogin()
+    {
+        // Logika untuk memproses form login akan ditambahkan di sini
+        // Saat ini, kita hanya akan kembali ke halaman login
+        if ($this->request->getPost()) {
+            // Validasi dan otentikasi akan ditambahkan di sini
+            session()->setFlashdata('error', 'Fitur login belum diimplementasikan.');
+            return redirect()->to(base_url('login'));
+        }
+
+        return redirect()->to(base_url('login'));
+    }
+
     public function register()
     {
         // Cek apakah user sudah login, jika ya, redirect ke dashboard
@@ -46,5 +72,13 @@ class Auth extends BaseController
             session()->setFlashdata('error', 'Registrasi gagal. Silakan coba lagi.');
             return redirect()->back()->withInput();
         }
+    }
+
+    public function logout()
+    {
+        // Logika untuk logout
+        session()->remove(['isLoggedIn', 'userData']);
+        session()->setFlashdata('success', 'Anda telah logout.');
+        return redirect()->to(base_url('login'));
     }
 }

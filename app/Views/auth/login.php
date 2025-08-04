@@ -1,52 +1,56 @@
-<?= $this->extend('layouts/auth') ?>
-
-<?= $this->section('title') ?>
-Login
-<?= $this->endSection() ?>
-
-<?= $this->section('content') ?>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-5">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                <div class="card-body">
-                    <?php if (session()->getFlashdata('success')): ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('success') ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if (session()->getFlashdata('error')): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?= session()->getFlashdata('error') ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <form action="<?= base_url('login') ?>" method="post">
-                        <?= csrf_field() ?>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputEmail" name="email_or_username" type="text" placeholder="name@example.com or username" value="<?= old('email_or_username') ?>" required />
-                            <label for="inputEmail">Email address or Username</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputPassword" name="password" type="password" placeholder="Password" required />
-                            <label for="inputPassword">Password</label>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                            <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                            <a class="small" href="password.html">Forgot Password?</a>
-                            <button class="btn btn-primary" type="submit">Login</button>
-                        </div>
-                    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon" />
+    <title>Login - Perpustakaan</title>
+    <!-- Link ke file CSS terpisah -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/login.css') ?>" />
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Form action harus mengarah ke controller login Anda -->
+        <form action="<?= base_url('login/auth') ?>" method="post">
+            <?= csrf_field() ?>
+            <h2>Login Form</h2>
+            
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= session()->getFlashdata('error') ?>
                 </div>
-                <div class="card-footer text-center py-3">
-                    <div class="small"><a href="<?= base_url('register') ?>">Need an account? Sign up!</a></div>
+            <?php endif; ?>
+
+            <?php if (isset($validation)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <?php foreach ($validation->getErrors() as $error): ?>
+                            <li><?= esc($error) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
+            <?php endif; ?>
+
+            <div class="input-field">
+                <input type="email" name="email" value="<?= old('email') ?>" required />
+                <label>Enter your email</label>
             </div>
-        </div>
+            <div class="input-field">
+                <input type="password" name="password" required />
+                <label>Enter your password</label>
+            </div>
+            <div class="forget">
+                <label for="remember">
+                    <input type="checkbox" id="remember" name="remember" />
+                    <p>Remember me</p>
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit">Log In</button>
+            <div class="register">
+                <p>Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </form>
     </div>
-</div>
-<?= $this->endSection() ?>
+</body>
+</html>
