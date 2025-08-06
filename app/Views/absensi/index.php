@@ -18,11 +18,13 @@
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
             Daftar Absensi Pengunjung
-            <a href="<?= base_url('absensi/create') ?>" class="btn btn-primary btn-sm float-end">Catat Absensi Baru</a>
+            <a href="<?= base_url('absensi/new') ?>" class="btn btn-primary btn-sm float-end">Catat Absensi Baru</a> <!-- PERUBAHAN DI SINI: 'create' menjadi 'new' -->
         </div>
         <div class="card-body">
             <?= session()->getFlashdata('success') ? '<div class="alert alert-success">' . session()->getFlashdata('success') . '</div>' : '' ?>
             <?= session()->getFlashdata('error') ? '<div class="alert alert-danger">' . session()->getFlashdata('error') . '</div>' : '' ?>
+            <?= session()->getFlashdata('info') ? '<div class="alert alert-info">' . session()->getFlashdata('info') . '</div>' : '' ?>
+
 
             <table id="datatablesSimple">
                 <thead>
@@ -42,7 +44,10 @@
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><?= esc($row['nama_anggota']) ?></td>
-                            <td><?= date('d/m/Y', strtotime($row['tanggal_masuk'])) ?></td> <td><?= date('H:i:s', strtotime($row['tanggal_masuk'])) ?></td> <td><?= $row['tanggal_keluar'] ? date('H:i:s', strtotime($row['tanggal_keluar'])) : '-' ?></td> <td>
+                            <td><?= date('d/m/Y', strtotime($row['tanggal_masuk'])) ?></td>
+                            <td><?= date('H:i:s', strtotime($row['tanggal_masuk'])) ?></td>
+                            <td><?= $row['tanggal_keluar'] ? date('H:i:s', strtotime($row['tanggal_keluar'])) : '-' ?></td>
+                            <td>
                                 <?php if ($row['status'] == 'masuk') : ?>
                                     <span class="badge bg-success">Masuk</span>
                                 <?php else : ?>

@@ -14,7 +14,7 @@
 </head>
 <style>
     body {
-        background: url("<?= base_url("assets/img/bg_latar.png") ?>") no-repeat center fixed;
+        background: url("<?= base_url("assets/img/1.png") ?>") no-repeat center fixed;
         background-size: cover;
         position: relative;
     }

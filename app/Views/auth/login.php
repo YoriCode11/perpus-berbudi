@@ -13,7 +13,7 @@
         <!-- Form action harus mengarah ke controller login Anda -->
         <form action="<?= base_url('login/auth') ?>" method="post">
             <?= csrf_field() ?>
-            <h2>Login Form</h2>
+            <h2>Login Admin</h2>
             
             <?php if (session()->getFlashdata('error')): ?>
                 <div class="alert alert-danger" role="alert">
@@ -33,18 +33,15 @@
 
             <div class="input-field">
                 <input type="email" name="email" value="<?= old('email') ?>" required />
-                <label>Enter your email</label>
+                <label>Masukan username</label>
             </div>
             <div class="input-field">
                 <input type="password" name="password" required />
-                <label>Enter your password</label>
+                <label>Masukan  Password</label>
             </div>
             <div class="forget">
                 <label for="remember">
-                    <input type="checkbox" id="remember" name="remember" />
-                    <p>Remember me</p>
                 </label>
-                <a href="#">Forgot password?</a>
             </div>
             <button type="submit">Log In</button>
             <div class="register">

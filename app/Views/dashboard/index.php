@@ -14,7 +14,7 @@ Dashboard
 
 <?= $this->section('content') ?>
 <div class="content-img">
-    <img src="<?= base_url('assets/img/bg_latar.png') ?>" class="img-fluid" alt="img content">
+    <img src="<?= base_url('assets/img/1.png') ?>" class="img-fluid" alt="img content">
 </div>
 <div class="card text-center">
     <div class="card-header">
@@ -33,13 +33,13 @@ Dashboard
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="<?= base_url('assets/img/bg_latar.png') ?>" class="d-block w-100" alt="slide 1">
+            <img src="<?= base_url('assets/img/bg_latar.jpg') ?>" class="d-block w-100" alt="slide 1">
             </div>
             <div class="carousel-item">
-            <img src="<?= base_url('assets/img/bg_latar.png') ?>" class="d-block w-100" alt="slide 2">
+            <img src="<?= base_url('assets/img/1.png') ?>" class="d-block w-100" alt="slide 2">
             </div>
             <div class="carousel-item">
-            <img src="<?= base_url('assets/img/bg_latar.png') ?>" class="d-block w-100" alt="slide 3">
+            <img src="<?= base_url('assets/img/latar.jpg') ?>" class="d-block w-100" alt="slide 3">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

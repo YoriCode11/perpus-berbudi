@@ -19,7 +19,7 @@ body {
   background-color: #000;
   position: relative;
   /* Pastikan path ke gambar benar, sesuaikan jika perlu */
-  background-image: url("../img/bg_latar.png");
+  background-image: url("../img/bg_latar.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
