@@ -15,9 +15,9 @@
 <?= $this->section('content') ?>
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-hand-holding-box me-1"></i>
+        <i class="fas fa-undo"></i>
         Daftar Peminjaman
-        <a href="<?= base_url('peminjaman/create') ?>" class="btn btn-primary btn-sm float-end">Catat Peminjaman Baru</a>
+        <a href="<?= base_url('peminjaman/new') ?>" class="btn btn-primary btn-sm float-end">Catat Peminjaman Baru</a> <!-- PERUBAHAN DI SINI: 'create' menjadi 'new' -->
     </div>
     <div class="card-body">
         <?php if (session()->getFlashdata('success')): ?>
@@ -30,6 +30,11 @@
                 <?= session()->getFlashdata('error') ?>
             </div>
         <?php endif; ?>
+        <?php if (session()->getFlashdata('info')): ?>
+            <div class="alert alert-info" role="alert">
+                <?= session()->getFlashdata('info') ?>
+            </div>
+        <?php endif; ?>
 
         <table id="datatablesSimple">
             <thead>
@@ -37,7 +42,6 @@
                     <th>No</th>
                     <th>Anggota</th>
                     <th>Buku</th>
-                    <th>Kategori</th>
                     <th>Tgl. Pinjam</th>
                     <th>Tgl. Kembali</th>
                     <th>Status</th>
@@ -51,7 +55,6 @@
                         <td><?= $no++ ?></td>
                         <td><?= esc($row['nama_anggota']) ?></td>
                         <td><?= esc($row['judul_buku']) ?></td>
-                        <td><?= esc($row['nama_kategori']) ?></td>
                         <td><?= date('d-m-Y H:i', strtotime(esc($row['tanggal_pinjam']))) ?></td>
                         <td>
                             <?php if (!empty($row['tanggal_kembali'])): ?>

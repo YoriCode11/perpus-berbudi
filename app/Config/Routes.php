@@ -39,16 +39,21 @@ $routes->group('anggota', function($routes){
 // Buku (Data Master)
 $routes->resource('buku');
 
-// Peminjaman (Transaksi)
-$routes->resource('peminjaman');
-$routes->get('peminjaman/kembalikan/(:num)', 'Peminjaman::kembalikan/$1');
+// Peminjaman (Transaksi) - Rute Eksplisit
+// Ganti baris $routes->resource('peminjaman'); dengan rute-rute eksplisit ini
+$routes->get('peminjaman', 'Peminjaman::index');
+$routes->get('peminjaman/new', 'Peminjaman::new'); // Menampilkan form tambah peminjaman
+$routes->post('peminjaman', 'Peminjaman::create'); // Memproses data POST dari form tambah peminjaman
+$routes->get('peminjaman/edit/(:num)', 'Peminjaman::edit/$1'); // Jika ada form edit peminjaman
+$routes->put('peminjaman/(:num)', 'Peminjaman::update/$1'); // Jika ada proses update peminjaman
+$routes->delete('peminjaman/(:num)', 'Peminjaman::delete/$1'); // Untuk menghapus peminjaman
+$routes->get('peminjaman/kembalikan/(:num)', 'Peminjaman::kembalikan/$1'); // Route khusus untuk pengembalian
 
 // Absensi Pengunjung (Rute Eksplisit)
-// Ganti baris $routes->resource('absensi'); dengan rute-rute eksplisit ini
 $routes->get('absensi', 'Absensi::index');
-$routes->get('absensi/new', 'Absensi::new'); // Menampilkan form tambah absensi
-$routes->post('absensi', 'Absensi::create'); // Memproses data POST dari form tambah absensi
-$routes->get('absensi/edit/(:num)', 'Absensi::edit/$1'); // Jika ada form edit absensi
-$routes->put('absensi/(:num)', 'Absensi::update/$1'); // Jika ada proses update absensi
-$routes->delete('absensi/(:num)', 'Absensi::delete/$1'); // Untuk menghapus absensi
-$routes->get('absensi/checkout/(:num)', 'Absensi::checkout/$1'); // Route khusus untuk checkout
+$routes->get('absensi/new', 'Absensi::new');
+$routes->post('absensi', 'Absensi::create');
+$routes->get('absensi/edit/(:num)', 'Absensi::edit/$1');
+$routes->put('absensi/(:num)', 'Absensi::update/$1');
+$routes->delete('absensi/(:num)', 'Absensi::delete/$1');
+$routes->get('absensi/checkout/(:num)', 'Absensi::checkout/$1');
