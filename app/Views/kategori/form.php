@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/sb_admin') ?>
+<?= $this->extend('layouts/main_layout') ?>
 
 <?= $this->section('title') ?>
 <?= $title ?>
