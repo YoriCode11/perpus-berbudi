@@ -13,78 +13,84 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-user-plus me-1"></i>
-        <?= $page_title ?>
+<div class="card shadow-lg border-0 rounded-3 mb-4">
+
+    <div class="card-header bg-primary text-white d-flex align-items-center">
+        <i class="fas fa-book-medical me-2"></i>
+        <h5 class="mb-0"><?= $page_title ?></h5>
     </div>
-    <div class="card-body">
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger" role="alert">
-                <?= session()->getFlashdata('error') ?>
-            </div>
-        <?php endif; ?>
 
-        <?php
-            $action_url = isset($anggota) ? base_url('anggota/update/' . $anggota['id']) : base_url('anggota/store');
-            $form_method = isset($anggota) ? 'PUT' : 'POST';
-        ?>
-        <form action="<?= $action_url ?>" method="post">
+
+    <div class="card-body p-4">
+        <form action="<?= base_url('/anggota/store') ?>" method="post">
             <?= csrf_field() ?>
-            <?php if (isset($anggota)): ?>
-                <input type="hidden" name="_method" value="<?= $form_method ?>">
-            <?php endif; ?>
+
 
             <div class="form-floating mb-3">
-                <input class="form-control <?= (session('validation') && session('validation')->hasError('nama')) ? 'is-invalid' : '' ?>" id="inputNama" name="nama" type="text" placeholder="Nama Anggota" value="<?= old('nama', isset($anggota) ? $anggota['nama'] : '') ?>" required />
-                <label for="inputNama">Nama Anggota</label>
-                <?php if (session('validation') && session('validation')->hasError('nama')) : ?>
-                    <div class="invalid-feedback">
-                        <?= session('validation')->getError('nama') ?>
-                    </div>
-                <?php endif; ?>
+                <input class="form-control" id="inputName" name="name" type="text" placeholder="Nama Anggota" required />
+                <label for="inputName">Nama Anggota</label>
             </div>
 
-            <div class="form-floating mb-3">
-                <input class="form-control <?= (session('validation') && session('validation')->hasError('no_telp')) ? 'is-invalid' : '' ?>" id="inputNoTelp" name="no_telp" type="text" placeholder="No. Telepon" value="<?= old('no_telp', isset($anggota) ? $anggota['no_telp'] : '') ?>" required />
-                <label for="inputNoTelp">No. Telepon</label>
-                <?php if (session('validation') && session('validation')->hasError('no_telp')) : ?>
-                    <div class="invalid-feedback">
-                        <?= session('validation')->getError('no_telp') ?>
-                    </div>
-                <?php endif; ?>
-            </div>
 
             <div class="form-floating mb-3">
-                <input class="form-control <?= (session('validation') && session('validation')->hasError('email')) ? 'is-invalid' : '' ?>" id="inputEmail" name="email" type="email" placeholder="Email" value="<?= old('email', isset($anggota) ? $anggota['email'] : '') ?>" />
-                <label for="inputEmail">Email (Opsional)</label>
-                <?php if (session('validation') && session('validation')->hasError('email')) : ?>
-                    <div class="invalid-feedback">
-                        <?= session('validation')->getError('email') ?>
-                    </div>
-                <?php endif; ?>
+                <input class="form-control" id="inputNis" name="nis" type="number" placeholder="Nis Anggota" required />
+                <label for="inputNis">Nis Anggota</label>
             </div>
 
+
             <div class="form-floating mb-3">
-                <select class="form-select <?= (session('validation') && session('validation')->hasError('jurusan')) ? 'is-invalid' : '' ?>" id="inputJurusan" name="jurusan" aria-label="Pilih Jurusan" required>
-                    <option value="">Pilih Jurusan</option>
-                    <option value="DKV/Multimedia" <?= (old('jurusan', isset($anggota) ? $anggota['jurusan'] : '') == 'DKV/Multimedia') ? 'selected' : '' ?>>DKV/Multimedia</option>
-                    <option value="Kuliner" <?= (old('jurusan', isset($anggota) ? $anggota['jurusan'] : '') == 'Kuliner') ? 'selected' : '' ?>>Kuliner</option>
-                    <option value="Kecantikan" <?= (old('jurusan', isset($anggota) ? $anggota['jurusan'] : '') == 'Kecantikan') ? 'selected' : '' ?>>Kecantikan</option>
+                <select id="class" name="class" class="form-select" required>
+                        <option value="">--Pilih Kelas--</option>
+                        <option value="X">X</option>
+                        <option value="XI">XI</option>
+                        <option value="XII">XII</option>
                 </select>
-                <label for="inputJurusan">Jurusan</label>
-                <?php if (session('validation') && session('validation')->hasError('jurusan')) : ?>
-                    <div class="invalid-feedback">
-                        <?= session('validation')->getError('jurusan') ?>
-                    </div>
-                <?php endif; ?>
+                 <label for="class" class="form-label">Kelas</label>
             </div>
 
-            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                <a class="btn btn-secondary" href="<?= base_url('anggota') ?>">Batal</a>
-                <button class="btn btn-primary" type="submit">Simpan</button>
+            <div class="form-floating mb-3">
+                
+                <select id="major" name="major" class="form-select" required>
+                        <option value="">--Pilih Jurusan--</option>
+                        <option value="Kecantikan">Kecantikan</option>
+                        <option value="Kuliner">Kuliner</option>
+                        <option value="DKV">DKV</option>
+                </select>
+                <label for="major" class="form-label">Jurusan</label>
+            </div>
+
+
+            <div class="form-floating mb-3">
+                <input class="form-control" id="inputPhone" name="phone" type="number" placeholder="Nomor HP" required />
+                <label for="inputPhone">Nomor HP</label>
+            </div>
+
+            <div class="form-floating mb-3">  
+                <select id="status" name="status" class="form-select" required>
+                        <option value="">--Pilih Status--</option>
+                        <option value="aktif">Aktif</option>
+                        <option value="tidak aktif">Tidak Aktif</option>
+
+                </select>
+                <label for="status" class="form-label">Status</label>
+            </div>
+
+
+            <div class="d-flex justify-content-center gap-3">
+                <a class="btn btn-outline-danger px-4" href="<?= base_url('buku') ?>">
+                    <i class="fas fa-times me-1"></i> Batal
+                </a>
+                <button class="btn btn-primary px-4" type="submit">
+                    <i class="fas fa-save me-1"></i> Simpan
+                </button>
             </div>
         </form>
     </div>
 </div>
+
 <?= $this->endSection() ?>
+
+<?= $this->section('custom_js') ?>
+
+<?= $this->endSection() ?>
+

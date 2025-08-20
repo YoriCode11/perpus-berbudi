@@ -7,53 +7,54 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-//$routes->get('/', 'Home::index');
-$routes->get('/dashboard', 'Dashboard::index');
-$routes->get('/', 'Dashboard::index');
 
-// Auth Routes
-$routes->get('/register', 'Auth::register');
-$routes->post('/register', 'Auth::processRegister');
-$routes->get('/login', 'Auth::index');
-$routes->post('/login', 'Auth::processLogin');
-$routes->get('/logout', 'Auth::logout');
 
-// Kategori (Data Master)
-$routes->get('kategori', 'Kategori::index');
-$routes->get('kategori/new', 'Kategori::new');
-$routes->post('kategori', 'Kategori::create');
-$routes->get('kategori/edit/(:num)', 'Kategori::edit/$1');
-$routes->put('kategori/(:num)', 'Kategori::update/$1');
-$routes->delete('kategori/(:num)', 'Kategori::delete/$1');
-
-// Anggota (Data Master)
-$routes->group('anggota', function($routes){
-    $routes->get('/', 'Anggota::index');
-    $routes->get('create', 'Anggota::create');
-    $routes->post('store', 'Anggota::store');
-    $routes->get('edit/(:num)', 'Anggota::edit/$1');
-    $routes->put('update/(:num)', 'Anggota::update/$1');
-    $routes->delete('(:num)', 'Anggota::delete/$1');
+$routes->get('/', function () {
+    return session()->get('isLoggedIn')
+        ? redirect()->to('/dashboard')
+        : redirect()->to('/auth/login');
 });
 
-// Buku (Data Master)
-$routes->resource('buku');
+$routes->get('auth/login', 'Auth::login', ['filter' => 'noauth']);
+$routes->post('auth/login', 'Auth::attempt', ['filter' => 'noauth']);
+$routes->get('auth/logout', 'Auth::logout');
 
-// Peminjaman (Transaksi) - Rute Eksplisit
-// Ganti baris $routes->resource('peminjaman'); dengan rute-rute eksplisit ini
-$routes->get('peminjaman', 'Peminjaman::index');
-$routes->get('peminjaman/new', 'Peminjaman::new'); // Menampilkan form tambah peminjaman
-$routes->post('peminjaman', 'Peminjaman::create'); // Memproses data POST dari form tambah peminjaman
-$routes->get('peminjaman/edit/(:num)', 'Peminjaman::edit/$1'); // Jika ada form edit peminjaman
-$routes->put('peminjaman/(:num)', 'Peminjaman::update/$1'); // Jika ada proses update peminjaman
-$routes->delete('peminjaman/(:num)', 'Peminjaman::delete/$1'); // Untuk menghapus peminjaman
-$routes->get('peminjaman/kembalikan/(:num)', 'Peminjaman::kembalikan/$1'); // Route khusus untuk pengembalian
+$routes->group('', ['filter' => 'auth'], function($routes){
+    $routes->get('dashboard', 'Dashboard::index');
+   
+    $routes->group('profile', function($routes){
+        $routes->get('/', 'Profile::index');
+        $routes->get('edit', 'Profile::edit');
+        $routes->post('update', 'Profile::update');
+        $routes->get('change-password', 'Profile::changepass');
+        $routes->post('changePassword', 'Profile::changePassword');
 
-// Absensi Pengunjung (Rute Eksplisit)
-$routes->get('absensi', 'Absensi::index');
-$routes->get('absensi/new', 'Absensi::new');
-$routes->post('absensi', 'Absensi::create');
-$routes->get('absensi/edit/(:num)', 'Absensi::edit/$1');
-$routes->put('absensi/(:num)', 'Absensi::update/$1');
-$routes->delete('absensi/(:num)', 'Absensi::delete/$1');
-$routes->get('absensi/checkout/(:num)', 'Absensi::checkout/$1');
+    });
+
+    $routes->group('buku', function($routes){
+        $routes->get('/', 'Buku::index');
+        $routes->get('new', 'Buku::new');
+        $routes->post('store', 'Buku::store');
+        $routes->get('edit/(:num)', 'Buku::edit/$1');
+        $routes->post('update/(:num)', 'Buku::update/$1');
+        $routes->delete('(:num)', 'Buku::delete/$1');
+    });
+
+    $routes->group('anggota', function($routes){
+        $routes->get('/', 'Anggota::index');
+        $routes->get('new', 'Anggota::new');
+        $routes->post('store', 'Anggota::store');
+        $routes->get('edit/(:num)', 'Anggota::edit/$1');
+        $routes->post('update/(:num)', 'Anggota::update/$1');
+        $routes->delete('(:num)', 'Anggota::delete/$1');
+    });
+
+    $routes->group('kategori', function($routes){
+        $routes->get('/', 'Kategori::index');
+        $routes->get('new', 'Kategori::new');
+        $routes->post('store', 'Kategori::store');
+        $routes->get('edit/(:num)', 'Kategori::edit/$1');
+        $routes->post('update/(:num)', 'Kategori::update/$1');
+        $routes->delete('(:num)', 'Kategori::delete/$1');
+    });
+});

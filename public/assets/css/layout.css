@@ -28,6 +28,18 @@ html {
   min-height: 100vh;
 }
 
+.main .container-fluid {
+    max-width: 100%;
+    padding-left: 1rem; /* optional */
+    padding-right: 1rem; /* optional */
+}
+
+.user-info:hover {
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 8px;
+    padding: 2px 6px;
+    cursor: pointer;
+}
 .sidebar {
   width: var(--sidebar-w);
   background: transparent;
@@ -77,6 +89,8 @@ html {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+/* marqueeeeeeeeeeeee
 
 /* mobile: sidebar slide in */
 .sidebar.show {
@@ -347,4 +361,19 @@ html {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+}
+
+@media (max-width: 768px) {
+    table.dataTable thead th,
+    table.dataTable tbody td {
+        font-size: 11px !important;
+        padding: 6px 8px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap;
+    }
+
+    table.dataTable thead th {
+        font-weight: 600 !important;
+        background-color: #f8f9fa; 
+    }
 }

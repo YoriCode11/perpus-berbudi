@@ -17,24 +17,16 @@
     <div class="card-header">
         <i class="fas fa-book me-1"></i>
         Daftar Buku
-        <a href="<?= base_url('buku/new') ?>" class="btn btn-primary btn-sm float-end">Tambah Buku</a>
+        <a href="<?= base_url('buku/new') ?>" class="btn btn-primary btn-sm float-end"><i class="fas fa-plus"></i> Tambah Buku</a>
     </div>
     <div class="card-body">
-        <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success" role="alert">
-                <?= session()->getFlashdata('success') ?>
-            </div>
-        <?php endif; ?>
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger" role="alert">
-                <?= session()->getFlashdata('error') ?>
-            </div>
-        <?php endif; ?>
 
-        <table id="datatablesSimple">
+
+        <table id="myTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>Tempat</th>
                     <th>Judul</th>
                     <th>Penulis</th>
                     <th>Penerbit</th>
@@ -49,19 +41,27 @@
                 <?php foreach ($buku as $row): ?>
                     <tr>
                         <td><?= $no++ ?></td>
-                        <td><?= esc($row['judul']) ?></td>
-                        <td><?= esc($row['penulis']) ?></td>
-                        <td><?= esc($row['penerbit']) ?></td>
-                        <td><?= esc($row['tahun_terbit']) ?></td>
-                        <td><?= esc($row['nama_kategori']) ?></td>
-                        <td><?= esc($row['stok']) ?></td>
+                        <td><?= esc($row['location']) ?></td>
+                        <td><?= esc($row['title']) ?></td>
+                        <td><?= esc($row['author']) ?></td>
+                        <td><?= esc($row['publisher']) ?></td>
+                        <td><?= esc($row['publish_year']) ?></td>
+                        <td><?= esc($row['category_name']) ?></td>
+                        <td><?= esc($row['stock']) ?></td>
                         <td>
-                            <a href="<?= base_url('buku/edit/' . $row['id']) ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="<?= base_url('buku/' . $row['id']) ?>" method="post" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus buku ini?');">
-                                <?= csrf_field() ?>
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                            </form>
+                            <div class="d-flex gap-2">
+                                <a href="<?= base_url('buku/edit/' . $row['id']) ?>" class="btn btn-warning btn-sm" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <form action="<?= base_url('buku/' . $row['id']) ?>" method="post" onsubmit="return confirm('Yakin ingin menghapus buku ini?');">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -70,8 +70,18 @@
     </div>
 </div>
 <?= $this->endSection() ?>
-
 <?= $this->section('custom_js') ?>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-<script src="<?= base_url('assets/js/datatables-simple-demo.js') ?>"></script>
+
+ <script src="<?= base_url('assets/js/datatables.js') ?>"></script>
+<script src="<?= base_url('assets/js/datatables.min.js') ?>"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    $('#myTable').DataTable({
+        scrollY: true,  
+        autoWidth: false,
+        responsive: false 
+    });
+});
+</script>
 <?= $this->endSection() ?>

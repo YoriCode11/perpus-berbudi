@@ -21,23 +21,9 @@
                         <p class="text-muted">SMK BERBUDI YOGYAKARTA</p>
                     </div>
 
-                    <?php if (session()->getFlashdata('error')): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?= session()->getFlashdata('error') ?>
-                        </div>
-                    <?php endif; ?>
 
-                    <?php if (isset($validation)): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <ul>
-                                <?php foreach ($validation->getErrors() as $error): ?>
-                                    <li><?= esc($error) ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
 
-                    <form action="<?= base_url('login') ?>" method="post">
+                    <form action="<?= base_url('auth/login') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
@@ -55,6 +41,9 @@
                         <div class="d-grid mt-4">
                             <button type="submit" class="btn btn-primary rounded-2 btn-login">Log In</button>
                         </div>
+                        <div class="d-grid mt-4">
+                            <a href="<?= base_url('/' . 'resetpassword')?>" style="text-decoration:none">Lupa Password?</a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -64,6 +53,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url('assets/js/alert.js') ?>"></script>
     <script>
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
@@ -75,5 +65,47 @@
             this.querySelector('i').classList.toggle('fa-eye-slash');
         });
     </script>
+
+    <?php if (session()->getFlashdata('error')): ?>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '<?= session()->getFlashdata('error') ?>',
+        });
+    });
+    </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('login_success')): ?>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '<?= session()->getFlashdata('login_success') ?>',
+            timer: 2000,
+            showConfirmButton: false
+        }).then(() => {
+            window.location.href = "<?= base_url('dashboard') ?>";
+        });
+    });
+    </script>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('success')): ?>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '<?= session()->getFlashdata('success') ?>',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    });
+    </script>
+    <?php endif; ?>
 </body>
 </html>

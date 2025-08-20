@@ -4,13 +4,10 @@ namespace App\Controllers;
 
 use App\Models\BukuModel;
 use App\Models\KategoriModel;
-use CodeIgniter\Controller;
-use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Buku extends BaseController
 {
     protected $bukuModel;
-    protected $kategoriModel;
 
     public function __construct()
     {
@@ -25,98 +22,67 @@ class Buku extends BaseController
             'title'      => 'Data Buku',
             'page_title' => 'Data Buku',
             'breadcrumb' => 'Data Master / Buku',
-            'buku'       => $this->bukuModel->getBukuWithKategori(),
+            'buku'       => $this->bukuModel->getBukuWithCategory(),
             'validation' => \Config\Services::validation(),
         ];
         return view('buku/index', $data);
     }
 
-    // Mengubah nama metode dari 'create' menjadi 'new' sesuai konvensi resource
     public function new()
     {
         $data = [
             'title'      => 'Tambah Buku',
             'page_title' => 'Tambah Buku',
             'breadcrumb' => 'Data Master / Buku / Tambah',
+            'kategori'   => $this->kategoriModel->findAll(),
             'validation' => \Config\Services::validation(),
-            // Gunakan withDeleted() untuk memastikan kategori yang soft-deleted juga bisa dipilih
-            'kategori'   => $this->kategoriModel->withDeleted()->findAll(),
         ];
         return view('buku/form', $data);
     }
 
-    // Mengubah nama metode dari 'store' menjadi 'create' sesuai konvensi resource
-    public function create()
-    {
-        // Perbaikan: Lakukan validasi dan tangani kegagalan
-        if (!$this->validate($this->bukuModel->validationRules, $this->bukuModel->validationMessages)) {
-            // Tambahkan logging untuk melihat kesalahan validasi secara detail
-            log_message('error', 'Validation failed for adding a new book. Errors: ' . json_encode($this->validator->getErrors()));
+ public function store()
+{
+    $data = $this->request->getPost();
 
-            return redirect()->back()->withInput()->with('validation', $this->validator);
-        }
-
-        $this->bukuModel->save([
-            'judul'        => $this->request->getPost('judul'),
-            'penulis'      => $this->request->getPost('penulis'),
-            'penerbit'     => $this->request->getPost('penerbit'),
-            'tahun_terbit' => $this->request->getPost('tahun_terbit'),
-            'id_kategori'  => $this->request->getPost('id_kategori'),
-            'stok'         => $this->request->getPost('stok'),
-        ]);
-
-        session()->setFlashdata('success', 'Data buku berhasil ditambahkan.');
-        return redirect()->to(base_url('buku'));
+    if (!$this->bukuModel->save($data)) {
+        return redirect()->back()->withInput()->with('errors', $this->bukuModel->errors());
     }
 
-    public function edit($id = null)
-    {
-        // Gunakan withDeleted() untuk memastikan buku yang soft-deleted juga bisa diedit
-        $buku = $this->bukuModel->withDeleted()->find($id);
+    return redirect()->to('/buku')->with('success', 'Buku berhasil ditambahkan');
+}
 
-        if (!$buku) {
-            throw new PageNotFoundException('Buku tidak ditemukan: ' . $id);
+    public function edit($id)
+    {
+        $book = $this->bukuModel->find($id);
+        if (!$book) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Buku dengan ID $id tidak ditemukan");
         }
 
         $data = [
             'title'      => 'Edit Buku',
             'page_title' => 'Edit Buku',
             'breadcrumb' => 'Data Master / Buku / Edit',
-            'buku'       => $buku,
+            'kategori'   => $this->kategoriModel->findAll(),
+            'buku'       => $book,
             'validation' => \Config\Services::validation(),
-            // Gunakan withDeleted() untuk memastikan kategori yang soft-deleted juga bisa dipilih
-            'kategori'   => $this->kategoriModel->withDeleted()->findAll(),
         ];
-        return view('buku/form', $data);
+
+        return view('buku/form_edit', $data);
     }
 
-    public function update($id = null)
+    public function update($id)
     {
-        // Validasi, pastikan menggunakan validationRules dari model
-        if (!$this->validate($this->bukuModel->validationRules, $this->bukuModel->validationMessages)) {
-            return redirect()->back()->withInput()->with('validation', $this->validator);
+        $data = $this->request->getPost();
+
+        if(!$this->bukuModel->update($id, $data)){
+            return redirect()->back()->withInput()->with('errors', $this->bukuModel->errors());
         }
-
-        $this->bukuModel->update($id, [
-            'judul'        => $this->request->getPost('judul'),
-            'penulis'      => $this->request->getPost('penulis'),
-            'penerbit'     => $this->request->getPost('penerbit'),
-            'tahun_terbit' => $this->request->getPost('tahun_terbit'),
-            'id_kategori'  => $this->request->getPost('id_kategori'),
-            'stok'         => $this->request->getPost('stok'),
-        ]);
-
-        session()->setFlashdata('success', 'Data buku berhasil diperbarui.');
-        return redirect()->to(base_url('buku'));
+        return redirect()->to('/buku')->with('success', 'Buku berhasil diperbarui');
     }
 
-    public function delete($id = null)
+    public function delete($id)
     {
-        if ($this->bukuModel->delete($id)) {
-            session()->setFlashdata('success', 'Data buku berhasil dihapus.');
-        } else {
-            session()->setFlashdata('error', 'Gagal menghapus data buku.');
-        }
-        return redirect()->to(base_url('buku'));
+        $this->bukuModel->delete($id);
+        return redirect()->to('/buku')->with('success', 'Buku berhasil dihapus');
     }
 }

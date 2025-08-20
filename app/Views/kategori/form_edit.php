@@ -27,18 +27,18 @@
 
 
             <div class="form-floating mb-3">
-                <input class="form-control" id="inputName" name="name" type="text" placeholder="Nama Kategori" required />
+                <input class="form-control" id="inputName" name="name" type="text" placeholder="Nama Kategori" value="<?= old('name', $category['name']) ?>" required />
                 <label for="inputName">Nama Kategori</label>
             </div>
 
 
             <div class="form-floating mb-3">
-                <textarea class="form-control" id="inputDescription" name="description" placeholder="Deskripsi Kategori" style="height: 100px;"></textarea>
+                <textarea class="form-control" id="inputDescription" name="description" placeholder="Deskripsi Kategori" style="height: 100px;"><?= old('description', $category['description']) ?></textarea>
                 <label for="inputDescription">Deskripsi</label>
             </div>
 
             <div class="d-flex justify-content-center gap-3">
-                <a class="btn btn-outline-danger px-4" href="<?= base_url('buku') ?>">
+                <a class="btn btn-outline-danger px-4" href="<?= base_url('kategori') ?>">
                     <i class="fas fa-times me-1"></i> Batal
                 </a>
                 <button class="btn btn-primary px-4" type="submit">

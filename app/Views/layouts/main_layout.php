@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title><?= $this->renderSection('title') ?> - Perpustakaan</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/layout.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/datatables.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/datatables.css') ?>">
 </head>
+
 <body>
 <div class="app-root">
     <aside id="app-sidebar" class="sidebar shadow-sm" aria-label="Sidebar Navigation">
@@ -64,8 +67,12 @@
         <div class="sidebar-footer p-3 small text-muted">
         </div>
     </aside>
+
     <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+
     <div class="main">
+
         <header class="navbar shadow-sm">
             <div class="container-fluid d-flex align-items-center gap-3">
                 <div class="d-flex align-items-center gap-2">
@@ -73,15 +80,30 @@
                         <i class="fa fa-bars fa-lg"></i>
                     </button>
                 </div>
+                 <div class="ms-auto d-flex align-items-center gap-3">
+                    <div class="dropdown">
+                        <div class="d-flex align-items-center user-info gap-2 dropdown-toggle" 
+                            id="userDropdown" 
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false" 
+                            style="cursor: pointer; color: white;">
+                            <div class="user-icon">
 
-                <div class="ms-auto d-flex align-items-center gap-3">
-                    <div class="d-flex align-items-center user-info gap-2">
-                        <span class="d-none d-md-inline">Pustakawan</span>
-                        <div class="user-icon">
-                            <i class="fas fa-user"></i>
+
+
+                            <?php $user = session()->get('user'); ?>
+                            
+                                <img src="<?= base_url('uploads/' . ($user['gambar'])) ?>" alt="Avatar"  width="35" height="35" class="rounded-circle">
+                            </div>
                         </div>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('/auth/logout') ?>"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
                     </div>
                 </div>
+
             </div>
         </header>
         <!-- END NAVBAR -->
@@ -111,6 +133,7 @@
 
 <!-- Bootstrap JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <!-- Small JS to control sidebar & submenu -->
 <script>
@@ -179,6 +202,45 @@
 
     })();
 </script>
+<script src="<?= base_url('assets/js/alert.js') ?>"></script>
+
+<?= $this->renderSection('custom_js') ?>
+<?php if (session()->getFlashdata('success')): ?>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '<?= session()->getFlashdata('success') ?>',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+    });
+</script>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('errors')): ?>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        html: `
+            <?php if (is_array(session()->getFlashdata('errors'))): ?>
+                <ul style="text-align: left; margin:0; padding-left:20px;">
+                <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                    <li><?= esc($error) ?></li>
+                <?php endforeach ?>
+                </ul>
+            <?php else: ?>
+                <?= esc(session()->getFlashdata('errors')) ?>
+            <?php endif ?>
+        `,
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+    });
+</script>
+<?php endif; ?>
+
 
 </body>
 </html>

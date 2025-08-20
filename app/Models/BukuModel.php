@@ -6,79 +6,62 @@ use CodeIgniter\Model;
 
 class BukuModel extends Model
 {
-    protected $table            = 'buku';
+    protected $table            = 'books';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = true;
+    protected $useSoftDeletes   = false;
 
-    protected $allowedFields    = ['judul', 'penulis', 'penerbit', 'tahun_terbit', 'id_kategori', 'stok'];
+    protected $allowedFields    = [
+        'title',
+        'author',
+        'publisher',
+        'publish_year',
+        'category_id',
+        'stock',
+        'location'
+    ];
 
-    // Dates
     protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
 
-    // Validation
     protected $validationRules = [
-        'judul'        => 'required|min_length[3]|max_length[255]',
-        'penulis'      => 'required|min_length[3]|max_length[100]',
-        'penerbit'     => 'required|min_length[3]|max_length[100]',
-        'tahun_terbit' => 'required|exact_length[4]|numeric|less_than_equal_to[2025]',
-        // PERBAIKAN: Gunakan parameter tambahan 'deleted_at,NULL' untuk mengabaikan data yang soft-deleted
-        'id_kategori'  => 'required|numeric|is_not_unique[kategori.id,deleted_at,NULL]',
-        'stok'         => 'required|numeric|greater_than_equal_to[0]',
+        'title'        => 'required|min_length[3]',
+        'author'       => 'permit_empty|string',
+        'publisher'    => 'permit_empty|string',
+        'publish_year' => 'required|numeric|exact_length[4]',
+        'category_id'  => 'required|is_natural_no_zero',
+        'stock'        => 'required|integer',
+        'location'     => 'permit_empty|string'
     ];
+
     protected $validationMessages = [
-        'judul' => [
-            'required'   => 'Judul buku harus diisi.',
-            'min_length' => 'Judul buku minimal 3 karakter.',
-            'max_length' => 'Judul buku maksimal 255 karakter.',
+        'title' => [
+            'required' => 'Judul buku wajib diisi',
+            'min_length' => 'Judul minimal 3 karakter'
         ],
-        'penulis' => [
-            'required'   => 'Nama penulis harus diisi.',
-            'min_length' => 'Nama penulis minimal 3 karakter.',
-            'max_length' => 'Nama penulis maksimal 100 karakter.',
+        'publish_year' => [
+            'required' => 'Tahun terbit wajib diisi',
+            'numeric'  => 'Tahun harus berupa angka',
+            'exact_length' => 'Tahun harus 4 digit'
         ],
-        'penerbit' => [
-            'required'   => 'Nama penerbit harus diisi.',
-            'min_length' => 'Nama penerbit minimal 3 karakter.',
-            'max_length' => 'Nama penerbit maksimal 100 karakter.',
+        'category_id' => [
+            'required' => 'Kategori wajib dipilih'
         ],
-        'tahun_terbit' => [
-            'required'           => 'Tahun terbit harus diisi.',
-            'exact_length'       => 'Tahun terbit harus 4 digit angka.',
-            'numeric'            => 'Tahun terbit harus berupa angka.',
-            'less_than_equal_to' => 'Tahun terbit tidak boleh lebih dari tahun sekarang (2025).',
+        'stock' => [
+            'required' => 'Stok wajib diisi',
+            'integer'  => 'Stok harus berupa angka'
         ],
-        'id_kategori' => [
-            'required'      => 'Kategori buku harus dipilih.',
-            'numeric'       => 'Kategori yang dipilih tidak valid.',
-            'is_not_unique' => 'Kategori yang dipilih tidak terdaftar.',
-        ],
-        'stok' => [
-            'required'              => 'Stok buku harus diisi.',
-            'numeric'               => 'Stok harus berupa angka.',
-            'greater_than_equal_to' => 'Stok buku tidak boleh kurang dari 0.',
-        ],
+        'location' => [
+            'required' => 'Letak buku harus diisi'
+        ]
     ];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
 
-    // Fungsi untuk mengambil data buku beserta nama kategori
-    public function getBukuWithKategori($id = null)
+        public function getBukuWithCategory()
     {
-        $builder = $this->db->table($this->table);
-        $builder->select('buku.*, kategori.nama_kategori'); // Pilih semua kolom buku dan nama_kategori
-        $builder->join('kategori', 'kategori.id = buku.id_kategori'); // Join dengan tabel kategori
-        $builder->where('buku.deleted_at IS NULL'); // HANYA tampilkan buku yang belum dihapus
-
-        if ($id) {
-            return $builder->where('buku.id', $id)->get()->getRowArray();
-        } else {
-            return $builder->get()->getResultArray();
-        }
+        return $this->select('books.*, categories.name AS category_name')
+                    ->join('categories', 'books.category_id = categories.id')
+                    ->findAll();
     }
 }

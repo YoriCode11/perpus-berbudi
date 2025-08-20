@@ -6,34 +6,33 @@ use CodeIgniter\Model;
 
 class KategoriModel extends Model
 {
-    protected $table            = 'kategori';
+    protected $table            = 'categories';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array'; // Atau 'object' jika lebih suka
-    protected $useSoftDeletes   = true; // Menggunakan soft delete
+    protected $returnType       = 'array';
+    protected $allowedFields    = ['name', 'description'];
+    protected $useTimestamps    = true;
+    protected $createdField     = 'created_at';
+    protected $updatedField     = 'updated_at';
 
-    protected $allowedFields    = ['nama_kategori'];
-
-    // Dates
-    protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
-
-    // Validation
+    // Default validation rules untuk CREATE
     protected $validationRules = [
-        // PERUBAHAN PENTING DI SINI: Menambahkan kondisi untuk mengabaikan soft-deleted records
-        'nama_kategori' => 'required|min_length[3]|max_length[100]|is_unique[kategori.nama_kategori,id,{id},deleted_at IS NULL]',
+        'name' => 'required|min_length[3]|max_length[100]|is_unique[categories.name]',
+        'description' => 'required|min_length[3]',
     ];
+
     protected $validationMessages = [
-        'nama_kategori' => [
-            'required'   => 'Nama kategori harus diisi.',
+        'name' => [
+            'required' => 'Nama kategori harus diisi.',
             'min_length' => 'Nama kategori minimal 3 karakter.',
             'max_length' => 'Nama kategori maksimal 100 karakter.',
-            'is_unique'  => 'Nama kategori ini sudah ada.',
+            'is_unique' => 'Nama kategori ini sudah ada.',
+        ],
+        'description' => [
+            'required' => 'Deskripsi kategori harus diisi.',
+            'min_length' => 'Deskripsi kategori minimal 3 karakter.',
         ],
     ];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+
+    protected $skipValidation = false;
 }
