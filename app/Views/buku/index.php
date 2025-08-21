@@ -26,7 +26,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tempat</th>
+                    <th>Rak</th>
                     <th>Judul</th>
                     <th>Penulis</th>
                     <th>Penerbit</th>

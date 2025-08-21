@@ -28,7 +28,7 @@
 
             <div class="form-floating mb-3">
                 <input class="form-control" id="inputLocation" name="location" type="text" placeholder="Letak Buku" required />
-                <label for="inputLocation">Letak Buku</label>
+                <label for="inputLocation">rak</label>
             </div>
 
 

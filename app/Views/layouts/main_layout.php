@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/layout.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/datatables.css') ?>">
+    <!-- Custom CSS Section -->
+    <?= $this->renderSection('custom_css') ?>
 </head>
 
 <body>
@@ -69,10 +71,7 @@
     </aside>
 
     <div id="sidebar-overlay" class="sidebar-overlay"></div>
-
-
     <div class="main">
-
         <header class="navbar shadow-sm">
             <div class="container-fluid d-flex align-items-center gap-3">
                 <div class="d-flex align-items-center gap-2">
@@ -80,7 +79,7 @@
                         <i class="fa fa-bars fa-lg"></i>
                     </button>
                 </div>
-                 <div class="ms-auto d-flex align-items-center gap-3">
+                <div class="ms-auto d-flex align-items-center gap-3">
                     <div class="dropdown">
                         <div class="d-flex align-items-center user-info gap-2 dropdown-toggle" 
                             id="userDropdown" 
@@ -88,22 +87,16 @@
                             aria-expanded="false" 
                             style="cursor: pointer; color: white;">
                             <div class="user-icon">
-
-
-
                             <?php $user = session()->get('user'); ?>
-                            
                                 <img src="<?= base_url('uploads/' . ($user['gambar'])) ?>" alt="Avatar"  width="35" height="35" class="rounded-circle">
                             </div>
                         </div>
-
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="<?= base_url('profile') ?>"><i class="fas fa-user me-2"></i>Profile</a></li>
                             <li><a class="dropdown-item" href="<?= base_url('/auth/logout') ?>"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </header>
         <!-- END NAVBAR -->

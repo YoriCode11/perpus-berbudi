@@ -28,18 +28,6 @@ html {
   min-height: 100vh;
 }
 
-.main .container-fluid {
-    max-width: 100%;
-    padding-left: 1rem; /* optional */
-    padding-right: 1rem; /* optional */
-}
-
-.user-info:hover {
-    background-color: rgba(0,0,0,0.05);
-    border-radius: 8px;
-    padding: 2px 6px;
-    cursor: pointer;
-}
 .sidebar {
   width: var(--sidebar-w);
   background: transparent;
@@ -60,7 +48,7 @@ html {
 
 /* Menyesuaikan sidebar-top untuk posisi tombol close dan branding yang lebih baik */
 .sidebar-top {
-  position: relative; /* Penting untuk memposisikan tombol close */
+  position: relative;
   height: 120px;
   padding: 1rem 0.75rem;
   display: flex;
@@ -89,8 +77,6 @@ html {
   font-size: 0.85rem;
   color: var(--muted);
 }
-
-/* marqueeeeeeeeeeeee
 
 /* mobile: sidebar slide in */
 .sidebar.show {
@@ -128,11 +114,17 @@ html {
   background: rgba(0, 0, 0, 0.05);
   color: var(--accent);
 }
+/* Menyesuaikan tampilan menu aktif agar hanya warna teks yang berubah, tanpa latar belakang */
 .sidebar-nav .nav-link.active {
-  background: #eaf2ff;
+  background: transparent;
   color: var(--accent);
-  border-left: 3px solid var(--accent);
   font-weight: 600;
+  /* Menghapus border-left yang sebelumnya ditambahkan */
+  border-left: 0;
+}
+/* Memastikan warna ikon juga berubah saat menu aktif */
+.sidebar-nav .nav-link.active .fa {
+  color: var(--accent);
 }
 .sidebar-nav .has-sub .chevron {
   transition: transform 0.25s;
@@ -208,8 +200,8 @@ html {
   background: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: var(--radius);
-  min-width: 200px;
-  padding: 0.5rem;
+  min-width: 220px;
+  padding: 0.75rem;
   z-index: 1050;
 }
 :root.sidebar-collapsed .nav-item.has-sub:hover .submenu {
@@ -218,8 +210,23 @@ html {
 :root.sidebar-collapsed .nav-item.has-sub:hover .nav-link {
   background: rgba(0, 0, 0, 0.05);
 }
+/* Menyesuaikan jarak vertikal dan tampilan item submenu */
+:root.sidebar-collapsed .nav-item.has-sub .submenu .nav-item {
+  margin: 0.25rem 0; /* Menambahkan margin vertikal antar item submenu */
+}
 :root.sidebar-collapsed .nav-item.has-sub .submenu .nav-link {
-  padding-left: 1rem;
+  padding: 0.75rem 1rem; /* Menyesuaikan padding di dalam setiap tautan */
+  border-radius: var(--radius); /* Memastikan sudutnya membulat */
+  background: #eef1f4; /* Latar belakang untuk setiap item */
+  color: var(--muted); /* Warna teks yang lebih halus */
+  transition: background var(--transition);
+}
+:root.sidebar-collapsed .nav-item.has-sub .submenu .nav-link:hover {
+  background: #e2e4e7; /* Warna latar belakang saat hover */
+}
+:root.sidebar-collapsed .nav-item.has-sub .submenu .nav-link.active {
+  background: var(--accent); /* Warna latar belakang saat aktif */
+  color: #fff; /* Warna teks putih saat aktif */
 }
 
 /* mobile: sidebar slide in */
@@ -254,7 +261,7 @@ html {
     gap: 0.75rem;
   }
   .app-root .sidebar-top {
-    justify-content: center; /* Memusatkan logo dan teks */
+    justify-content: center;
     padding: 0.5rem 0.75rem;
   }
   .app-root .sidebar-footer {
@@ -278,7 +285,7 @@ html {
 /* NAVBAR */
 .navbar {
   height: 64px;
-  background: #0d6efd;
+  background: var(--accent);
   color: #fff;
   display: flex;
   align-items: center;
@@ -305,25 +312,16 @@ html {
   border: 2px solid rgba(0, 0, 0, 0.15);
 }
 
-.user-icon {
-  font-size: 1.5rem;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 /* content */
 .content {
   flex: 1;
   padding: 1.25rem 1.25rem 3rem 1.25rem;
   background: transparent;
 }
+/* Menghapus batasan max-width pada container agar dapat menyesuaikan diri */
 .container-fluid {
-  max-width: 1200px;
+  /* max-width: 1200px; */ /* Dihapus */
+  width: 100%;
 }
 
 /* breadcrumb */
@@ -333,10 +331,6 @@ html {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   border: 1px solid #eef1f4;
-}
-.breadcrumb a {
-  color: var(--accent);
-  text-decoration: none;
 }
 
 /* footer */
@@ -361,19 +355,4 @@ html {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-}
-
-@media (max-width: 768px) {
-    table.dataTable thead th,
-    table.dataTable tbody td {
-        font-size: 11px !important;
-        padding: 6px 8px !important;
-        line-height: 1.2 !important;
-        white-space: nowrap;
-    }
-
-    table.dataTable thead th {
-        font-weight: 600 !important;
-        background-color: #f8f9fa; 
-    }
 }

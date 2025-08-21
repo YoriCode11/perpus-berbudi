@@ -15,7 +15,7 @@
 <?= $this->section('content') ?>
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-person me-1"></i>
+        <i class="fas fa-users me-1"></i>
         Daftar Anggota
         <a href="<?= base_url('anggota/new') ?>" class="btn btn-primary btn-sm float-end"><i class="fas fa-plus"></i> Tambah Anggota</a>
     </div>
