@@ -74,6 +74,16 @@ $routes->group('', ['filter' => 'auth'], function($routes){
 
     });
 
+    $routes->group('peminjaman', function($routes){
+        $routes->get('/', 'Peminjaman::index');
+        $routes->get('new', 'Peminjaman::new');
+        $routes->post('store', 'Peminjaman::store');
+        $routes->get('edit/(:num)', 'Peminjaman::edit/$1');
+        $routes->post('update/(:num)', 'Peminjaman::update/$1');
+        $routes->delete('(:num)', 'Peminjaman::delete/$1');
+
+    });
+
 
     
 });
