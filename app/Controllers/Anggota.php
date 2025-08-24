@@ -65,45 +65,31 @@ class Anggota extends BaseController
 
 public function update($id)
 {
-    $category = $this->kategoriModel->find($id);
+    $anggota = $this->anggotaModel->find($id);
 
-    if (!$category) {
-        return redirect()->back()->with('error', 'Kategori tidak ditemukan.');
+    if (!$anggota) {
+        return redirect()->back()->with('error', 'Anggota tidak ditemukan.');
     }
 
-    // Validasi input
-    $rules = [
-        'name' => [
-            'label' => 'Nama Kategori',
-            'rules' => "required|min_length[3]|max_length[100]|is_unique[categories.name,id,$id]",
-            'errors' => [
-                'required' => 'Nama kategori wajib diisi.',
-                'min_length' => 'Nama kategori minimal 3 karakter.',
-                'max_length' => 'Nama kategori maksimal 100 karakter.',
-                'is_unique' => 'Nama kategori sudah digunakan.'
-            ]
-        ],
-        'description' => [
-            'label' => 'Deskripsi',
-            'rules' => 'required|string|min_length[3]',
-            'errors' => [
-                'required' => 'Deskripsi wajib diisi.',
-                'min_length' => 'Deskripsi minimal 3 karakter.'
-            ]
-        ]
-    ];
+    // Ambil data dari form
+    $data = $this->request->getPost();
 
-    if (!$this->validate($rules)) {
+    // Set ID yang akan di-exclude dari is_unique
+    $this->anggotaModel->setValidationRules([
+        'name' => 'required|min_length[3]|max_length[100]',
+        'nis'  => 'required|numeric|is_unique[members.nis,id,' . $id . ']',
+        'class' => 'required',
+        'major' => 'required',
+        'phone' => 'required|numeric',
+        'status'=> 'required'
+    ]);
+
+    if (!$this->validate($this->anggotaModel->getValidationRules())) {
         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
 
-    // Update data
-    $this->kategoriModel->update($id, [
-        'name' => $this->request->getPost('name'),
-        'description' => $this->request->getPost('description')
-    ]);
-
-    return redirect()->to('/kategori')->with('success', 'Kategori berhasil diperbarui.');
+    $this->anggotaModel->update($id, $data);
+    return redirect()->to('/anggota')->with('success', 'Anggota berhasil diperbarui.');
 }
 
 

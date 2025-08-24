@@ -22,45 +22,50 @@
 
 
     <div class="card-body p-4">
-        <form action="<?= base_url('/absensi/store') ?>" method="post">
+        <form action="<?= base_url('/absensi/update/' . $attendance['id']) ?>" method="post">
             <?= csrf_field() ?>
-
 
             <div class="mb-3">
                 <label for="member_id" class="form-label">Nama Anggota</label>
                 <select name="member_id" id="member_id" class="form-control" required>
                     <option value="">-- Pilih Anggota --</option>
                     <?php foreach ($members as $m): ?>
-                        <option value="<?= $m['id'] ?>"><?= esc($m['name']) ?> (<?= esc($m['nis']) ?>)</option>
+                        <option value="<?= $m['id'] ?>" <?= (isset($attendance) && $attendance['member_id'] == $m['id']) ? 'selected' : '' ?>>
+                            <?= esc($m['name']) ?> (<?= esc($m['nis']) ?>)
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </div>
 
             <div class="mb-3">
                 <label for="date" class="form-label">Tanggal</label>
-                <input type="date" name="date" id="date" class="form-control" value="<?= old('date') ?>" required>
+                <input type="date" name="date" id="date" class="form-control"
+                    value="<?= isset($attendance) ? $attendance['date'] : old('date') ?>" required>
             </div>
 
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select name="status" id="status" class="form-control" required>
-                    <option value="Hadir">Hadir</option>
-                    <option value="Tidak Hadir">Tidak Hadir</option>
+                    <option value="Hadir" <?= (isset($attendance) && $attendance['status'] == 'Hadir') ? 'selected' : '' ?>>Hadir</option>
+                    <option value="Tidak Hadir" <?= (isset($attendance) && $attendance['status'] == 'Tidak Hadir') ? 'selected' : '' ?>>Tidak Hadir</option>
                 </select>
             </div>
 
             <div class="mb-3">
                 <label for="time_in" class="form-label">Jam Masuk</label>
-                <input type="time" name="time_in" id="time_in" class="form-control" value="<?= old('time_in') ?>">
+                <input type="time" name="time_in" id="time_in" class="form-control"
+                    value="<?= isset($attendance) ? $attendance['time_in'] : old('time_in') ?>">
             </div>
 
             <div class="mb-3">
                 <label for="time_out" class="form-label">Jam Keluar</label>
-                <input type="time" name="time_out" id="time_out" class="form-control" value="<?= old('time_out') ?>">
+                <input type="time" name="time_out" id="time_out" class="form-control"
+                    value="<?= isset($attendance) ? $attendance['time_out'] : old('time_out') ?>">
             </div>
 
+
             <div class="d-flex justify-content-center gap-3">
-                <a class="btn btn-outline-danger px-4" href="<?= base_url('absensi') ?>">
+                <a class="btn btn-outline-danger px-4" href="<?= base_url('buku') ?>">
                     <i class="fas fa-times me-1"></i> Batal
                 </a>
                 <button class="btn btn-primary px-4" type="submit">

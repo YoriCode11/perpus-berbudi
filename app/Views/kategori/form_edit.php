@@ -22,7 +22,7 @@
 
 
     <div class="card-body p-4">
-        <form action="<?= base_url('/kategori/store') ?>" method="post">
+        <form action="<?= base_url('/kategori/update/' . $category['id']) ?>" method="post">
             <?= csrf_field() ?>
 
 

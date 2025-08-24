@@ -63,41 +63,31 @@ class Kategori extends BaseController
         return view('kategori/form_edit', $data);
     }
 
-    public function update($id)
-    {
-        $category = $this->kategoriModel->find($id);
-        if (!$category) {
-            return redirect()->back()->with('error', 'Kategori tidak ditemukan.');
-        }
 
-        $name = $this->request->getPost('name');
+public function update($id)
+{
+    $kategori = $this->kategoriModel->find($id);
 
-
-        if ($name != $category['name']) {
-            $rules = [
-                'name' => 'required|min_length[3]|max_length[100]|is_unique[categories.name]',
-                'description' => 'required|min_length[3]',
-            ];
-        } else {
-
-            $rules = [
-                'name' => 'required|min_length[3]|max_length[100]',
-                'description' => 'required|min_length[3]',
-            ];
-        }
-
-        if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
-        }
-
-        $this->kategoriModel->update($id, [
-            'name' => $name,
-            'description' => $this->request->getPost('description'),
-        ]);
-
-        return redirect()->to('/kategori')->with('success', 'Kategori berhasil diperbarui.');
+    if (!$kategori) {
+        return redirect()->back()->with('error', 'Anggota tidak ditemukan.');
     }
 
+    $data = $this->request->getPost();
+
+    $this->kategoriModel->setValidationRules([
+        'description' => 'required|min_length[3]',
+        'name'  => 'required|min_length[3]|max_length[100]|is_unique[categories.name,id,' . $id . ']',
+
+    ]);
+
+    if (!$this->validate($this->kategoriModel->getValidationRules())) {
+        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    }
+
+    $this->kategoriModel->update($id, $data);
+    return redirect()->to('/kategori')->with('success', ' berhasil diperbarui.');
+}
+    
     public function delete($id)
     {
         $this->kategoriModel->delete($id);

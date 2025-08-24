@@ -18,6 +18,12 @@ $routes->get('/', function () {
 $routes->get('auth/login', 'Auth::login', ['filter' => 'noauth']);
 $routes->post('auth/login', 'Auth::attempt', ['filter' => 'noauth']);
 $routes->get('auth/logout', 'Auth::logout');
+$routes->get('forgot-password', 'Auth::forgotPassword',['filter' => 'noauth']);
+$routes->post('forgot-password', 'Auth::processForgotPassword',['filter' => 'noauth']);
+$routes->get('security-question/(:any)', 'Auth::securityQuestion/$1',['filter' => 'noauth']);
+$routes->post('security-question/(:any)', 'Auth::processSecurityQuestion/$1',['filter' => 'noauth']);
+$routes->get('reset-password/(:any)', 'Auth::resetPassword/$1',['filter' => 'noauth']);
+$routes->post('reset-password/(:any)', 'Auth::processResetPassword/$1',['filter' => 'noauth']);
 
 $routes->group('', ['filter' => 'auth'], function($routes){
     $routes->get('dashboard', 'Dashboard::index');
@@ -57,4 +63,17 @@ $routes->group('', ['filter' => 'auth'], function($routes){
         $routes->post('update/(:num)', 'Kategori::update/$1');
         $routes->delete('(:num)', 'Kategori::delete/$1');
     });
+
+    $routes->group('absensi', function($routes){
+        $routes->get('/', 'Absensi::index');
+        $routes->get('new', 'Absensi::new');
+        $routes->post('store', 'Absensi::store');
+        $routes->get('edit/(:num)', 'Absensi::edit/$1');
+        $routes->post('update/(:num)', 'Absensi::update/$1');
+        $routes->delete('(:num)', 'Absensi::delete/$1');
+
+    });
+
+
+    
 });

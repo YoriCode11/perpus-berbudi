@@ -17,7 +17,7 @@ class KategoriModel extends Model
 
     // Default validation rules untuk CREATE
     protected $validationRules = [
-        'name' => 'required|min_length[3]|max_length[100]|is_unique[categories.name]',
+        'name' => 'required|min_length[3]|max_length[100]|is_unique[categories.name,id,{id}',
         'description' => 'required|min_length[3]',
     ];
 
@@ -34,5 +34,4 @@ class KategoriModel extends Model
         ],
     ];
 
-    protected $skipValidation = false;
 }
