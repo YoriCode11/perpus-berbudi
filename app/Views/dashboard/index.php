@@ -34,64 +34,75 @@ Dashboard
 
 <div class="row">
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card h-100">
-            <div class="card-body p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex flex-column">
-                        <a href="<?= base_url('anggota') ?>" class="text-decoration-none"><span class="text-muted fw-bold">Total Anggota</span></a>
-                        <h4 class="mb-0 mt-1">4,800</h4>
-                    </div>
-                    <div class="icon-circle bg-light-primary">
-                        <i class="fas fa-users text-primary"></i>
+        <a href="<?= base_url('anggota') ?>" class="text-decoration-none card-link">
+            <div class="card h-100">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="text-muted fw-bold">Total Anggota</span>
+                            <h4 class="mb-0 mt-1">4,800</h4>
+                        </div>
+                        <div class="icon-circle bg-light-primary">
+                            <i class="fas fa-users text-primary"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
+
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card h-100">
-            <div class="card-body p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex flex-column">
-                        <a href="<?= base_url('buku') ?>" class="text-decoration-none"><span class="text-muted fw-bold">Total Buku</span></a>
-                        <h4 class="mb-0 mt-1">1,250</h4>
-                    </div>
-                    <div class="icon-circle bg-light-success">
-                        <i class="fas fa-book-open text-success"></i>
+        <a href="<?= base_url('buku') ?>" class="text-decoration-none card-link">
+            <div class="card h-100">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="text-muted fw-bold">Total Buku</span>
+                            <h4 class="mb-0 mt-1">1,250</h4>
+                        </div>
+                        <div class="icon-circle bg-light-success">
+                            <i class="fas fa-book-open text-success"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
+
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card h-100">
-            <div class="card-body p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex flex-column">
-                        <a href="<?= base_url('peminjaman') ?>" class="text-decoration-none"><span class="text-muted fw-bold">Buku Dipinjam</span></a>
-                        <h4 class="mb-0 mt-1">75</h4>
-                    </div>
-                    <div class="icon-circle bg-light-info">
-                        <i class="fas fa-handshake text-info"></i>
+        <a href="<?= base_url('peminjaman') ?>" class="text-decoration-none card-link">
+            <div class="card h-100">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="text-muted fw-bold">Buku Dipinjam</span>
+                            <h4 class="mb-0 mt-1">75</h4>
+                        </div>
+                        <div class="icon-circle bg-light-info">
+                            <i class="fas fa-handshake text-info"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
+    
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card h-100">
-            <div class="card-body p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="d-flex flex-column">
-                        <a href="<?= base_url('peminjaman') ?>"><span class="text-muted fw-bold">Buku Terlambat</span></a>
-                        <h4 class="mb-0 mt-1">10</h4>
-                    </div>
-                    <div class="icon-circle bg-light-danger">
-                        <i class="fas fa-clock text-danger"></i>
+        <a href="<?= base_url('peminjaman') ?>" class="text-decoration-none card-link">
+            <div class="card h-100">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="text-muted fw-bold">Buku Terlambat</span>
+                            <h4 class="mb-0 mt-1">10</h4>
+                        </div>
+                        <div class="icon-circle bg-light-danger">
+                            <i class="fas fa-clock text-danger"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 
@@ -135,6 +146,16 @@ Dashboard
 }
 .text-danger {
   color: #dc3545 !important;
+}
+
+/* Custom CSS untuk tautan kartu */
+.card-link {
+    color: inherit; /* Mengambil warna teks dari elemen induk */
+    text-decoration: none; /* Menghilangkan garis bawah tautan */
+}
+
+.card-link:hover .card {
+    border-color: #0d6efd; /* Mengubah warna border saat di-hover */
 }
 
 </style>
