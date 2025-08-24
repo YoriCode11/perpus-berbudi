@@ -18,7 +18,7 @@ class Kategori extends BaseController
         $data = [
             'title' => 'Data Kategori',
             'page_title' => 'Kategori',
-            'breadcrumb' => 'Kategori',
+            'breadcrumb' => 'Data Master / Kategori',
             'category' => $this->kategoriModel->findAll()
         ];
         return view('kategori/index', $data);

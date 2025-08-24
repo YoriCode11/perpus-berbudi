@@ -17,7 +17,6 @@ Dashboard
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<!-- Bagian Kartu Selamat Datang yang diperbarui -->
 <div class="card mb-4">
     <div class="card-body">
         <div class="row align-items-center">
@@ -27,14 +26,13 @@ Dashboard
                 <a href="#!" class="btn btn-sm btn-primary mt-2">Lihat Laporan Lengkap</a>
             </div>
             <div class="col-md-3 text-center d-none d-md-block">
-                <img src="https://placehold.co/120x120/E0F7FA/00796B?text=Ilustrasi" alt="Ilustrasi" class="img-fluid">
+                <img src="<?= base_url('assets/img/man-with-laptop-light.png') ?>" alt="Ilustrasi" class="img-fluid">
             </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <!-- Kartu Total Anggota -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card h-100">
             <div class="card-body p-3">
@@ -50,7 +48,6 @@ Dashboard
             </div>
         </div>
     </div>
-    <!-- Kartu Total Buku -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card h-100">
             <div class="card-body p-3">
@@ -66,7 +63,6 @@ Dashboard
             </div>
         </div>
     </div>
-    <!-- Kartu Buku Dipinjam -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card h-100">
             <div class="card-body p-3">
@@ -82,7 +78,6 @@ Dashboard
             </div>
         </div>
     </div>
-    <!-- Kartu Buku Terlambat -->
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card h-100">
             <div class="card-body p-3">
@@ -101,7 +96,6 @@ Dashboard
 </div>
 
 <style>
-    /* Styling untuk card ringkasan data yang baru */
 .card {
   border-radius: 0.5rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);

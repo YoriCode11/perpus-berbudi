@@ -20,9 +20,6 @@
                         <h4 class="text-secondary fw-bold">Sistem Informasi Perpustakaan</h4>
                         <p class="text-muted">SMK BERBUDI YOGYAKARTA</p>
                     </div>
-
-
-
                     <form action="<?= base_url('auth/login') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="mb-3">
@@ -42,7 +39,7 @@
                             <button type="submit" class="btn btn-primary rounded-2 btn-login">Log In</button>
                         </div>
                         <div class="d-grid mt-4">
-                            <a href="<?= base_url('/' . 'forgot-password')?>" style="text-decoration:none">Lupa Password?</a>
+                            <a href="<?= base_url('/' . 'resetpassword')?>" style="text-decoration:none">Lupa Password?</a>
                         </div>
                     </form>
                 </div>

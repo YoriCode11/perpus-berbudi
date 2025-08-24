@@ -18,7 +18,7 @@ class Anggota extends BaseController
         $data = [
             'title' => 'Data Anggota',
             'page_title' => 'Anggota',
-            'breadcrumb' => 'Anggota',
+            'breadcrumb' => 'Data Master / Anggota',
             'members' => $this->anggotaModel->findAll()
         ];
         return view('anggota/index', $data);

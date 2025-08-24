@@ -29,7 +29,7 @@ class Absensi extends Controller
         $data = [
             'title'       => 'Data Absensi',
             'page_title'  => 'Daftar Absensi',
-            'breadcrumb'  => 'Absensi',
+            'breadcrumb'  => 'Transaksi / Absensi',
             'attendances' => $attendances
         ];
 

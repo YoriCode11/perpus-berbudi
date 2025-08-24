@@ -15,7 +15,7 @@
 <?= $this->section('content') ?>
 <div class="card shadow-lg border-0 rounded-3 mb-4">
 
-    <div class="card-header bg-primary text-white d-flex align-items-center">
+    <div class="card-header bg-warning text-dark d-flex align-items-center">
         <i class="fas fa-book-medical me-2"></i>
         <h5 class="mb-0"><?= $page_title ?></h5>
     </div>

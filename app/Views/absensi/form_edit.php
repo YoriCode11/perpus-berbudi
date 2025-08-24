@@ -14,13 +14,10 @@
 
 <?= $this->section('content') ?>
 <div class="card shadow-lg border-0 rounded-3 mb-4">
-
-    <div class="card-header bg-primary text-white d-flex align-items-center">
+    <div class="card-header bg-warning text-dark d-flex align-items-center">
         <i class="fas fa-book-medical me-2"></i>
         <h5 class="mb-0"><?= $page_title ?></h5>
     </div>
-
-
     <div class="card-body p-4">
         <form action="<?= base_url('/absensi/update/' . $attendance['id']) ?>" method="post">
             <?= csrf_field() ?>
@@ -36,13 +33,11 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label for="date" class="form-label">Tanggal</label>
                 <input type="date" name="date" id="date" class="form-control"
                     value="<?= isset($attendance) ? $attendance['date'] : old('date') ?>" required>
             </div>
-
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select name="status" id="status" class="form-control" required>
@@ -50,20 +45,16 @@
                     <option value="Tidak Hadir" <?= (isset($attendance) && $attendance['status'] == 'Tidak Hadir') ? 'selected' : '' ?>>Tidak Hadir</option>
                 </select>
             </div>
-
             <div class="mb-3">
                 <label for="time_in" class="form-label">Jam Masuk</label>
                 <input type="time" name="time_in" id="time_in" class="form-control"
                     value="<?= isset($attendance) ? $attendance['time_in'] : old('time_in') ?>">
             </div>
-
             <div class="mb-3">
                 <label for="time_out" class="form-label">Jam Keluar</label>
                 <input type="time" name="time_out" id="time_out" class="form-control"
                     value="<?= isset($attendance) ? $attendance['time_out'] : old('time_out') ?>">
             </div>
-
-
             <div class="d-flex justify-content-center gap-3">
                 <a class="btn btn-outline-danger px-4" href="<?= base_url('buku') ?>">
                     <i class="fas fa-times me-1"></i> Batal

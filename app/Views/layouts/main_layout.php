@@ -116,8 +116,13 @@
             </div>
         </main>
 
-        <footer class="footer text-center small text-muted py-3">
-            Perpustakaan SMK Berbudi
+        <footer class="py-4 bg-white mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; smkberbudi 2025</div>
+                    <div class="text-muted"><i>Version. P_SB.1.0.0</i></div>
+                </div>
+            </div>
         </footer>
     </div>
     <!-- END MAIN -->
