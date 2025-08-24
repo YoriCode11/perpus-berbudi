@@ -1,3 +1,4 @@
+
 <?= $this->extend('layouts/main_layout') ?>
 
 <?= $this->section('title') ?>
@@ -13,14 +14,14 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="card shadow-sm">
-    <div class="card-header bg-warning text-dark">
-        <i class="fas fa-edit me-2"></i> <?= $page_title ?>
+<div class="card shadow-lg border-0 rounded-3 mb-4">
+    <div class="card-header bg-warning text-dark d-flex align-items-center">
+        <i class="fas fa-book-medical me-2"></i>
+        <h5 class="mb-0"><?= $page_title ?></h5>
     </div>
-    <div class="card-body">
-        <form action="<?= base_url('peminjaman/update/'.$peminjaman['id']) ?>" method="post">
+    <div class="card-body p-4">
+        <form action="<?= base_url('/peminjaman/update/' . $peminjaman['id']) ?>" method="post">
             <?= csrf_field() ?>
-
             <div class="mb-3">
                 <label class="form-label">Nama Anggota</label>
                 <select name="member_id" class="form-control" required>
@@ -70,9 +71,22 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-warning">Update</button>
-            <a href="<?= base_url('peminjaman') ?>" class="btn btn-secondary">Batal</a>
+            </div>
+            <div class="d-flex justify-content-center gap-3">
+                <a class="btn btn-outline-danger px-4" href="<?= base_url('buku') ?>">
+                    <i class="fas fa-times me-1"></i> Batal
+                </a>
+                <button class="btn btn-primary px-4" type="submit">
+                    <i class="fas fa-save me-1"></i> Simpan
+                </button>
+            </div>
         </form>
     </div>
 </div>
+
 <?= $this->endSection() ?>
+
+<?= $this->section('custom_js') ?>
+
+<?= $this->endSection() ?>
+

@@ -91,7 +91,7 @@ DROP TABLE IF EXISTS `books`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `books` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `author` varchar(100) NOT NULL,
   `publisher` varchar(100) NOT NULL,
@@ -1540,6 +1540,43 @@ INSERT INTO `books` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `borrowings`
+--
+
+DROP TABLE IF EXISTS `borrowings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `borrowings` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` int(10) unsigned NOT NULL,
+  `book_id` int(10) unsigned NOT NULL,
+  `borrow_date` date NOT NULL,
+  `return_date` date DEFAULT NULL,
+  `status` enum('Dipinjam','Dikembalikan','Terlambat') DEFAULT 'Dipinjam',
+  `qty` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `fk_borrow_member` (`member_id`),
+  KEY `fk_borrow_book` (`book_id`),
+  CONSTRAINT `fk_borrow_book` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_borrow_member` FOREIGN KEY (`member_id`) REFERENCES `members` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `borrowings`
+--
+
+LOCK TABLES `borrowings` WRITE;
+/*!40000 ALTER TABLE `borrowings` DISABLE KEYS */;
+INSERT INTO `borrowings` VALUES
+(1,2,1,'2025-08-24','2025-07-30','Dikembalikan',1,'2025-08-24 19:24:06','2025-08-24 19:47:25'),
+(3,2,4,'2025-08-24','2025-08-31','Dipinjam',1,'2025-08-24 19:37:59','2025-08-24 19:37:59');
+/*!40000 ALTER TABLE `borrowings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `categories`
 --
 
@@ -1676,4 +1713,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-24 10:35:17
+-- Dump completed on 2025-08-24 11:55:14

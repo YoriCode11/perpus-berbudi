@@ -40,7 +40,7 @@ Dashboard
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex flex-column">
                             <span class="text-muted fw-bold">Total Anggota</span>
-                            <h4 class="mb-0 mt-1">4,800</h4>
+                            <h4 class="mb-0 mt-1"><?= $jumlahAnggota ?></h4>
                         </div>
                         <div class="icon-circle bg-light-primary">
                             <i class="fas fa-users text-primary"></i>
@@ -58,7 +58,7 @@ Dashboard
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex flex-column">
                             <span class="text-muted fw-bold">Total Buku</span>
-                            <h4 class="mb-0 mt-1">1,250</h4>
+                            <h4 class="mb-0 mt-1"><?= $jumlahBuku ?></h4>
                         </div>
                         <div class="icon-circle bg-light-success">
                             <i class="fas fa-book-open text-success"></i>
@@ -76,7 +76,7 @@ Dashboard
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex flex-column">
                             <span class="text-muted fw-bold">Buku Dipinjam</span>
-                            <h4 class="mb-0 mt-1">75</h4>
+                            <h4 class="mb-0 mt-1"><?= $bukuDipinjam ?></h4>
                         </div>
                         <div class="icon-circle bg-light-info">
                             <i class="fas fa-handshake text-info"></i>
@@ -94,7 +94,7 @@ Dashboard
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex flex-column">
                             <span class="text-muted fw-bold">Buku Terlambat</span>
-                            <h4 class="mb-0 mt-1">10</h4>
+                            <h4 class="mb-0 mt-1"><?= $bukuTerlambat ?></h4>
                         </div>
                         <div class="icon-circle bg-light-danger">
                             <i class="fas fa-clock text-danger"></i>
