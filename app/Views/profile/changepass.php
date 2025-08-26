@@ -26,7 +26,7 @@ Profil
         <label for="current_password" class="form-label">Password Lama</label>
         <div class="input-group">
             <input type="password" class="form-control rounded-2" id="current_password" name="current_password" required>
-            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button">
+            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button" id="togglePassword">
                 <i class="fas fa-eye-slash"></i>
             </button>
         </div>
@@ -37,7 +37,7 @@ Profil
         <label for="new_password" class="form-label">Password Baru</label>
         <div class="input-group">
             <input type="password" class="form-control rounded-2" id="new_password" name="new_password" required>
-            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button">
+            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button" id="togglePassword">
                 <i class="fas fa-eye-slash"></i>
             </button>
         </div>
@@ -48,7 +48,7 @@ Profil
         <label for="confirm_password" class="form-label">Konfirmasi Password</label>
         <div class="input-group">
             <input type="password" class="form-control rounded-2" id="confirm_password" name="confirm_password" required>
-            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button">
+            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button"  id="togglePassword">
                 <i class="fas fa-eye-slash"></i>
             </button>
         </div>
@@ -66,3 +66,28 @@ Profil
 </form>
 
 <?= $this->endSection() ?>
+
+<?= $this->section('custom_js') ?>
+<script>
+    const togglePasswordButtons = document.querySelectorAll('.togglePassword');
+
+    togglePasswordButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const input = this.previousElementSibling; // input password sebelum tombol
+            const icon = this.querySelector('i');
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            }
+        });
+    });
+</script>
+<?= $this->endSection() ?>
+
+ 
