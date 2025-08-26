@@ -75,7 +75,7 @@ public function update($id)
     $data = $this->request->getPost();
 
     $this->kategoriModel->setValidationRules([
-        'description' => 'required|min_length[3]',
+        'description' => 'permit_empty|min_length[3]',
         'name'  => 'required|min_length[3]|max_length[100]|is_unique[categories.name,id,' . $id . ']',
 
     ]);

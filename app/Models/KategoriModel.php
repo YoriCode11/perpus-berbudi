@@ -15,23 +15,20 @@ class KategoriModel extends Model
     protected $createdField     = 'created_at';
     protected $updatedField     = 'updated_at';
 
-    // Default validation rules untuk CREATE
     protected $validationRules = [
-        'name' => 'required|min_length[3]|max_length[100]|is_unique[categories.name,id,{id}',
-        'description' => 'required|min_length[3]',
+        'name'        => 'required|min_length[3]|max_length[100]|is_unique[categories.name,id,{id}]',
+        'description' => 'permit_empty|min_length[3]'
     ];
 
     protected $validationMessages = [
         'name' => [
-            'required' => 'Nama kategori harus diisi.',
+            'required'   => 'Nama kategori harus diisi.',
             'min_length' => 'Nama kategori minimal 3 karakter.',
             'max_length' => 'Nama kategori maksimal 100 karakter.',
-            'is_unique' => 'Nama kategori ini sudah ada.',
+            'is_unique'  => 'Nama kategori ini sudah ada.',
         ],
         'description' => [
-            'required' => 'Deskripsi kategori harus diisi.',
-            'min_length' => 'Deskripsi kategori minimal 3 karakter.',
+            'min_length' => 'Deskripsi kategori minimal 3 karakter jika diisi.',
         ],
     ];
-
 }
