@@ -26,7 +26,7 @@ Profil
         <label for="current_password" class="form-label">Password Lama</label>
         <div class="input-group">
             <input type="password" class="form-control rounded-2" id="current_password" name="current_password" required>
-            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button">
+            <button class="btn btn-outline-secondary rounded-2 ms-2 togglePassword" type="button" id="togglePassword">
                 <i class="fas fa-eye-slash"></i>
             </button>
         </div>
@@ -66,3 +66,4 @@ Profil
 </form>
 
 <?= $this->endSection() ?>
+

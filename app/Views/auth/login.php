@@ -38,9 +38,6 @@
                         <div class="d-grid mt-4">
                             <button type="submit" class="btn btn-primary rounded-2 btn-login">Log In</button>
                         </div>
-                        <div class="d-grid mt-4">
-                            <a href="<?= base_url('/' . 'resetpassword')?>" style="text-decoration:none">Lupa Password?</a>
-                        </div>
                     </form>
                 </div>
             </div>

@@ -1,4 +1,3 @@
-
 <?= $this->extend('layouts/main_layout') ?>
 
 <?= $this->section('title') ?>
@@ -22,9 +21,14 @@
     <div class="card-body p-4">
         <form action="<?= base_url('/peminjaman/update/' . $peminjaman['id']) ?>" method="post">
             <?= csrf_field() ?>
+
             <div class="mb-3">
-                <label class="form-label">Nama Anggota</label>
-                <select name="member_id" class="form-control" required>
+                <label for="member_id" class="form-label">Nama Anggota</label>
+                <select name="member_id"
+                        id="member_id"
+                        class="form-control select2"
+                        data-placeholder="-- Pilih Anggota --"
+                        required>
                     <?php foreach ($members as $m): ?>
                         <option value="<?= $m['id'] ?>" <?= $peminjaman['member_id']==$m['id'] ? 'selected':'' ?>>
                             <?= esc($m['name']) ?> (<?= esc($m['nis']) ?>)
@@ -34,11 +38,15 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Judul Buku</label>
-                <select name="book_id" class="form-control" required>
+                <label for="book_id" class="form-label">Judul Buku</label>
+                <select name="book_id"
+                        id="book_id"
+                        class="form-control select2"
+                        data-placeholder="-- Pilih Buku --"
+                        required>
                     <?php foreach ($books as $b): ?>
                         <option value="<?= $b['id'] ?>" <?= $peminjaman['book_id']==$b['id'] ? 'selected':'' ?>>
-                            <?= esc($b['title']) ?>
+                            <?= esc($b['title']) ?> (Stock: <?= esc($b['stock']) ?>)
                         </option>
                     <?php endforeach ?>
                 </select>
@@ -46,32 +54,31 @@
 
             <div class="mb-3">
                 <label class="form-label">Jumlah Buku</label>
-                <input type="number" name="qty" class="form-control" 
+                <input type="number" name="qty" class="form-control"
                        value="<?= $peminjaman['qty'] ?>" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Tanggal Pinjam</label>
-                <input type="date" name="borrow_date" class="form-control" 
+                <input type="date" name="borrow_date" class="form-control"
                        value="<?= $peminjaman['borrow_date'] ?>" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Tanggal Kembali</label>
-                <input type="date" name="return_date" class="form-control" 
+                <input type="date" name="return_date" class="form-control"
                        value="<?= $peminjaman['return_date'] ?>" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Status</label>
                 <select name="status" class="form-control" required>
-                    <option value="Dipinjam" <?= $peminjaman['status']=='Dipinjam'?'selected':'' ?>>Dipinjam</option>
+                    <option value="Dipinjam"     <?= $peminjaman['status']=='Dipinjam'?'selected':'' ?>>Dipinjam</option>
                     <option value="Dikembalikan" <?= $peminjaman['status']=='Dikembalikan'?'selected':'' ?>>Dikembalikan</option>
-                    <option value="Terlambat" <?= $peminjaman['status']=='Terlambat'?'selected':'' ?>>Terlambat</option>
+                    <option value="Terlambat"    <?= $peminjaman['status']=='Terlambat'?'selected':'' ?>>Terlambat</option>
                 </select>
             </div>
 
-            </div>
             <div class="d-flex justify-content-center gap-3">
                 <a class="btn btn-outline-danger px-4" href="<?= base_url('buku') ?>">
                     <i class="fas fa-times me-1"></i> Batal
@@ -83,10 +90,18 @@
         </form>
     </div>
 </div>
-
 <?= $this->endSection() ?>
 
+<?php // tidak perlu include JS Select2 lagi di sini karena sudah di layout ?>
 <?= $this->section('custom_js') ?>
-
+<script>
+  // Jika ingin spesifik halaman: (opsional, boleh dihapus bila sudah auto-init di layout)
+  $(function(){
+    $('#member_id, #book_id').select2({
+      theme: 'bootstrap-5',
+      allowClear: true,
+      width: '100%'
+    });
+  });
+</script>
 <?= $this->endSection() ?>
-

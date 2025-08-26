@@ -27,7 +27,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Kategori</th>
-                    <th>Description</th>
+                    <th>Deskripsi</th>
                     <th>Aksi</th>
                 </tr>
             </thead>

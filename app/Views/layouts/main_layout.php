@@ -12,9 +12,29 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/layout.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/datatables.css') ?>">
+    <!-- Select2 core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Tema Bootstrap 5 untuk Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
     <!-- Custom CSS Section -->
     <?= $this->renderSection('custom_css') ?>
 </head>
+
+<style>
+/* Opsional: sentuhan kecil agar tinggi & padding seragam dengan .form-control */
+.select2-container .select2-selection--single {
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  display: flex; align-items: center;
+  border-radius: .375rem;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 1.5;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+}
+</style>
 
 <body>
 <div class="app-root">
@@ -88,7 +108,7 @@
                             style="cursor: pointer; color: white;">
                             <div class="user-icon">
                             <?php $user = session()->get('user'); ?>
-                                <img src="<?= base_url('uploads/' . ($user['gambar'])) ?>" alt="Avatar"  width="35" height="35" class="rounded-circle">
+                                <img src="<?= base_url('uploads/' . ($user['gambar'])) ?>" alt="profil"  width="35" height="35" class="rounded-circle">
                             </div>
                         </div>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -132,6 +152,22 @@
 <!-- Bootstrap JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+  // Auto-apply ke semua <select> yang punya class .select2
+  $(function () {
+    $('.select2').each(function () {
+      $(this).select2({
+        theme: 'bootstrap-5',
+        placeholder: $(this).attr('data-placeholder') || '-- Pilih Data --',
+        allowClear: true,
+        width: '100%'
+      });
+    });
+  });
+</script>
 
 <!-- Small JS to control sidebar & submenu -->
 <script>

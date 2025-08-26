@@ -23,7 +23,7 @@ Dashboard
             <div class="col-md-9">
                 <h4 class="fw-bold">Selamat Datang Pustakawan SMK Berbudi!</h4>
                 <p class="text-muted">Pantau perkembangan perpustakaan sekolah dengan mudah.</p>
-                <a href="#!" class="btn btn-sm btn-primary mt-2">Lihat Laporan Lengkap</a>
+                <a href="<?= base_url('absensi') ?>" class="btn btn-sm btn-primary mt-2">Lihat Absensi Pengunjung</a>
             </div>
             <div class="col-md-3 text-center d-none d-md-block">
                 <img src="<?= base_url('assets/img/man-with-laptop-light.png') ?>" alt="Ilustrasi" class="img-fluid">

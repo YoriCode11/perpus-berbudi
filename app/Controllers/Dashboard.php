@@ -36,7 +36,7 @@ class Dashboard extends BaseController
         $data = [
             'title'         => 'Dashboard',
             'page_title'    => 'Dashboard',
-            'breadcrumb'    => 'Home / Dashboard',
+            'breadcrumb'    => 'Dashboard',
             'jumlahAnggota' => $jumlahAnggota,
             'jumlahBuku'    => $jumlahBuku,
             'bukuDipinjam'  => $bukuDipinjam,

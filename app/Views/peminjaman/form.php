@@ -13,6 +13,9 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<!-- Tambahkan CSS Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 <div class="card shadow-lg border-0 rounded-3 mb-4">
     <div class="card-header bg-primary text-white d-flex align-items-center">
         <i class="fas fa-book me-2"></i>
@@ -25,7 +28,7 @@
 
             <div class="mb-3">
                 <label for="member_id" class="form-label">Nama Anggota</label>
-                <select name="member_id" id="member_id" class="form-control" required>
+                <select name="member_id" id="member_id" class="form-control select2" required>
                     <option value="">-- Pilih Anggota --</option>
                     <?php foreach ($members as $m): ?>
                         <option value="<?= $m['id'] ?>">
@@ -37,7 +40,7 @@
 
             <div class="mb-3">
                 <label for="book_id" class="form-label">Judul Buku</label>
-                <select name="book_id" id="book_id" class="form-control" required>
+                <select name="book_id" id="book_id" class="form-control select2" required>
                     <option value="">-- Pilih Buku --</option>
                     <?php foreach ($books as $b): ?>
                         <option value="<?= $b['id'] ?>">
@@ -55,13 +58,13 @@
             <div class="mb-3">
                 <label for="borrow_date" class="form-label">Tanggal Pinjam</label>
                 <input type="date" name="borrow_date" id="borrow_date" class="form-control" 
-                       value="<?= date('Y-m-d') ?>" readonly>
+                       value="<?= date('Y-m-d') ?>" required>
             </div>
 
             <div class="mb-3">
                 <label for="return_date" class="form-label">Tanggal Kembali</label>
                 <input type="date" name="return_date" id="return_date" class="form-control"
-                       value="<?= date('Y-m-d', strtotime('+7 days')) ?>" required>
+                       value="<?= date('Y-m-d', strtotime('+7 days')) ?>">
             </div>
 
             <div class="mb-3">
@@ -81,4 +84,18 @@
         </form>
     </div>
 </div>
+
+<!-- Tambahkan JS Select2 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('.select2').select2({
+        placeholder: "-- Pilih Data --",
+        allowClear: true,
+        width: '100%'
+    });
+});
+</script>
 <?= $this->endSection() ?>
