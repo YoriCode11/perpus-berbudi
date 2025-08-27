@@ -1,0 +1,91 @@
+# ----------------------------------------------------------------------
+# Root .htaccess for CodeIgniter 4 on XAMPP
+# ----------------------------------------------------------------------
+# File ini harus diletakkan di ROOT PROJECT (sejajar dengan app/, public/, system/)
+# Fungsi: Mengarahkan semua request ke folder public/
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Set base untuk subfolder di XAMPP
+    RewriteBase /perpus-smk/
+
+    # Handle requests for the public folder specifically
+    # Jika sudah mengakses public/, lanjutkan ke public folder
+    RewriteCond %{REQUEST_URI} ^/perpus-smk/public/
+    RewriteRule ^(.*)$ - [L]
+
+    # Redirect root access to public folder
+    # Redirect dari root ke public/
+    RewriteRule ^$ public/ [L]
+
+    # Handle requests that don't match above rules
+    # Redirect semua request lain ke public folder
+    RewriteCond %{REQUEST_URI} !(^/?$)
+    RewriteCond %{REQUEST_URI} !^/perpus-smk/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Handle direct access to folders/files that exist
+    # Untuk file yang ada di root, tetap bisa diakses
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+</IfModule>
+
+# Disable directory browsing untuk keamanan
+Options -Indexes
+
+# Prevent access to sensitive files
+# Blokir akses ke file-file sensitif
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+    # Apache 2.2
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+    
+    # Apache 2.4
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+# Protect .env file
+<Files ".env">
+    # Apache 2.2
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+    
+    # Apache 2.4
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</Files>
+
+# Protect composer files
+<Files "composer.*">
+    # Apache 2.2
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+    
+    # Apache 2.4
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</Files>
+
+# Protect system folders
+<IfModule mod_alias.c>
+    RedirectMatch 403 ^/perpus-smk/(app|system|writable)
+</IfModule>
+
+# Error pages (optional)
+# ErrorDocument 403 /perpus-smk/public/errors/403.html
+# ErrorDocument 404 /perpus-smk/public/errors/404.html
+# ErrorDocument 500 /perpus-smk/public/errors/500.html

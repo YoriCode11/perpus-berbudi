@@ -16,7 +16,9 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    // UBAH DARI: public string $baseURL = 'http://localhost:8080/';
+    // MENJADI:
+    public string $baseURL = 'http://localhost/perpus-smk/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -40,7 +42,9 @@ class App extends BaseConfig
      * something else. If you have configured your web server to remove this file
      * from your site URIs, set this variable to an empty string.
      */
-    public string $indexPage = 'index.php';
+    // UBAH DARI: public string $indexPage = 'index.php';
+    // MENJADI:
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
@@ -93,6 +97,7 @@ class App extends BaseConfig
      * strings (like currency markers, numbers, etc), that your program
      * should run under for this request.
      */
+    // OPSIONAL: Ubah ke 'id' untuk bahasa Indonesia
     public string $defaultLocale = 'en';
 
     /**
@@ -133,7 +138,9 @@ class App extends BaseConfig
      * @see https://www.php.net/manual/en/timezones.php for list of timezones
      *      supported by PHP.
      */
-    public string $appTimezone = 'UTC';
+    // UBAH DARI: public string $appTimezone = 'UTC';
+    // MENJADI:
+    public string $appTimezone = 'Asia/Jakarta';
 
     /**
      * --------------------------------------------------------------------------
