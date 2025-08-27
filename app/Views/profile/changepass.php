@@ -67,8 +67,6 @@ Profil
 
 <?= $this->endSection() ?>
 
-<<<<<<< HEAD
-=======
 <?= $this->section('custom_js') ?>
 <script>
     const togglePasswordButtons = document.querySelectorAll('.togglePassword');
@@ -92,5 +90,3 @@ Profil
 </script>
 <?= $this->endSection() ?>
 
- 
->>>>>>> d27b5e52795d38df3f7b20814502ce74d43a6a57

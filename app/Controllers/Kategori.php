@@ -29,7 +29,7 @@ class Kategori extends BaseController
         $data = [
             'title' => 'Tambah Kategori',
             'page_title' => 'Tambah Kategori',
-            'breadcrumb' => 'Kategori / Tambah',
+            'breadcrumb' => 'Data Master / Kategori / Tambah',
             'validation' => \Config\Services::validation(),
         ];
         return view('kategori/form', $data);
@@ -56,7 +56,7 @@ class Kategori extends BaseController
         $data = [
             'title' => 'Edit Kategori',
             'page_title' => 'Edit Kategori',
-            'breadcrumb' => 'Kategori / Edit',
+            'breadcrumb' => 'Data Master / Kategori / Edit',
             'category' => $kategori
         ];
 

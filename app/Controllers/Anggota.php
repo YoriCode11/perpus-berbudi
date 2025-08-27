@@ -29,7 +29,7 @@ class Anggota extends BaseController
         $data = [
             'title' => 'Tambah Anggota',
             'page_title' => 'Tambah Anggota',
-            'breadcrumb' => 'Anggota / Tambah',
+            'breadcrumb' => 'Data Master / Anggota / Tambah',
             'validation' => \Config\Services::validation(),
         ];
         return view('anggota/form', $data);
@@ -56,7 +56,7 @@ class Anggota extends BaseController
         $data = [
             'title' => 'Edit Anggota',
             'page_title' => 'Edit Anggota',
-            'breadcrumb' => 'Anggota / Edit',
+            'breadcrumb' => 'Data Master / Anggota / Edit',
             'member' => $anggota
         ];
 

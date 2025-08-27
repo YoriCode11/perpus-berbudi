@@ -24,7 +24,7 @@ class Peminjaman extends BaseController
         $data = [
             'title' => 'Daftar Peminjaman',
             'page_title' => 'Peminjaman Buku',
-            'breadcrumb' => 'Peminjaman',
+            'breadcrumb' => 'Transaksi / Peminjaman',
             'peminjaman' => $this->borrowingModel
                 ->select('borrowings.*, members.name as member_name, books.title as book_title, members.nis as member_nis')
                 ->join('members', 'members.id = borrowings.member_id')
@@ -39,7 +39,7 @@ class Peminjaman extends BaseController
         $data = [
             'title' => 'Tambah Peminjaman',
             'page_title' => 'Tambah Peminjaman',
-            'breadcrumb' => 'Tambah Peminjaman',
+            'breadcrumb' => 'Transaksi / Peminjaman / Tambah',
             'members' => $this->memberModel->findAll(),
             'books' => $this->bookModel->findAll(),
         ];
@@ -73,7 +73,7 @@ class Peminjaman extends BaseController
         $data = [
             'title'      => 'Edit Peminjaman',
             'page_title' => 'Edit Peminjaman',
-            'breadcrumb' => 'Peminjaman / Edit',
+            'breadcrumb' => 'Transaksi / Peminjaman / Edit',
             'peminjaman' => $this->borrowingModel->find($id),
             'members'    => $this->memberModel->findAll(),
             'books'      => $this->bookModel->findAll()

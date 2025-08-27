@@ -44,7 +44,7 @@ class Absensi extends Controller
         $data = [
             'title'      => 'Tambah Absensi',
             'page_title' => 'Form Absensi',
-            'breadcrumb' => 'Absensi > Tambah',
+            'breadcrumb' => 'Transaksi / Absensi / Tambah',
             'members'    => $members
         ];
 
@@ -76,7 +76,7 @@ class Absensi extends Controller
         $data = [
             'title'      => 'Edit Absensi',
             'page_title' => 'Edit Absensi',
-            'breadcrumb' => 'Absensi > Edit',
+            'breadcrumb' => 'Transaksi / Absensi / Edit',
             'attendance' => $attendance,
             'members'    => $members
         ];
