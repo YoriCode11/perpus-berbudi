@@ -71,7 +71,7 @@
 
             <div class="form-floating mb-4">
                 <input class="form-control" id="inputStock" name="stock" type="number" placeholder="Stok" required min="0" />
-                <label for="inputStock">Stok</label>
+                <label for="inputStock">Jumlah</label>
             </div>
 
             <div class="d-flex justify-content-center gap-3">

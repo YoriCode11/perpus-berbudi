@@ -46,7 +46,7 @@
                         required>
                     <?php foreach ($books as $b): ?>
                         <option value="<?= $b['id'] ?>" <?= $peminjaman['book_id']==$b['id'] ? 'selected':'' ?>>
-                            <?= esc($b['title']) ?> (Stock: <?= esc($b['stock']) ?>)
+                            <?= esc($b['title']) ?> ( Jumlah : <?= esc($b['stock']) ?>)
                         </option>
                     <?php endforeach ?>
                 </select>
@@ -92,10 +92,9 @@
 </div>
 <?= $this->endSection() ?>
 
-<?php // tidak perlu include JS Select2 lagi di sini karena sudah di layout ?>
+<?php  ?>
 <?= $this->section('custom_js') ?>
 <script>
-  // Jika ingin spesifik halaman: (opsional, boleh dihapus bila sudah auto-init di layout)
   $(function(){
     $('#member_id, #book_id').select2({
       theme: 'bootstrap-5',

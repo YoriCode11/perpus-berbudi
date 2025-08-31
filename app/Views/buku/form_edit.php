@@ -61,7 +61,7 @@
             <div class="form-floating mb-4">
                 <input class="form-control" id="inputStock" name="stock" type="number"
                     placeholder="Stok" min="0" value="<?= old('stock', $buku['stock']) ?>" required />
-                <label for="inputStock">Stok</label>
+                <label for="inputStock">Jumlah</label>
             </div>
             <div class="d-flex justify-content-center gap-3">
                 <a class="btn btn-outline-danger px-4" href="<?= base_url('buku') ?>">

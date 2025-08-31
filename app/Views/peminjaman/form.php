@@ -13,7 +13,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<!-- Tambahkan CSS Select2 -->
+
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 <div class="card shadow-lg border-0 rounded-3 mb-4">
@@ -44,7 +44,7 @@
                     <option value="">-- Pilih Buku --</option>
                     <?php foreach ($books as $b): ?>
                         <option value="<?= $b['id'] ?>">
-                            <?= esc($b['title']) ?> (Stock: <?= esc($b['stock']) ?>)
+                            <?= esc($b['title']) ?> ( Jumlah : <?= esc($b['stock']) ?>)
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -85,7 +85,6 @@
     </div>
 </div>
 
-<!-- Tambahkan JS Select2 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 

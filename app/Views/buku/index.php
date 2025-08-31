@@ -32,7 +32,7 @@
                     <th>Penerbit</th>
                     <th>Tahun Terbit</th>
                     <th>Kategori</th>
-                    <th>Stok</th>
+                    <th>Jumlah</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
