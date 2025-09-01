@@ -7,11 +7,11 @@
 ## 📋 Daftar Isi
 
 1. [Overview](#-overview)
-2. [Fitur Utama](#-fitur-utama)
-3. [Teknologi](#-teknologi-yang-digunakan)
-4. [Instalasi](#-instalasi)
-5. [API Endpoints](#-api-endpoints)
-6. [User Roles](#-user-roles)
+2. [Teknologi](#-teknologi-yang-digunakan)
+3. [Instalasi](#-instalasi)
+4. [API Endpoints](#-api-endpoints)
+5. [User Roles](#-user-roles)
+6. [Fitur Utama](#-fitur-utama)
 7. [Fitur Detail](#-fitur-detail)
 8. [Troubleshooting](#-troubleshooting)
 9. [Development](#-development-guide)
@@ -32,65 +32,6 @@ Sistem ini dirancang untuk mempermudah pengelolaan operasional perpustakaan seca
 - Interface yang user-friendly dan responsif
 - Sistem keamanan berlapis
 - Laporan dan analitik yang komprehensif
-
----
-
-## ✨ Fitur Utama
-
-### 📖 Manajemen Buku
-- **CRUD Buku**: Tambah, edit dan hapus data buku
-- **Kategorisasi**: Organisasi buku berdasarkan kategori dan genre
-- **ISBN Management**: Validasi dan tracking ISBN
-- **Stock Management**: Kelola jumlah buku
-  
----
-
-<img width="800" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
-
----
-
-<img width="800" alt="Screenshot 2025-08-31 215853" src="https://github.com/user-attachments/assets/ed2b0c69-47f2-4f88-a48a-b7155fc6fd0f" />
-
----
-
-### 👥 Manajemen Anggota
-- **Registrasi Anggota**: Pendaftaran anggota baru
-- **Status Keanggotaan**: Monitoring status aktif/non-aktifn
-
----
-
-<img width="800" alt="Screenshot 2025-09-01 014015" src="https://github.com/user-attachments/assets/044c45d0-4fc9-4678-827b-c2cdb7547ef2" />
-
----
-
-### 🔄 Sistem Peminjaman
-- **Checkout Books**: Proses peminjaman buku
-- **Return Books**: Proses pengembalian buku
-
----
-
-<img width="800" alt="Screenshot 2025-09-01 011726" src="https://github.com/user-attachments/assets/e07dae38-fd07-49c7-8570-146604ef7ef0" />
-
----
-
-<img width="800" alt="Screenshot 2025-09-01 012320" src="https://github.com/user-attachments/assets/681127ea-556f-46c3-ba33-6c44b32618e6" />
-
----
-
-### 👥 Sistem Absensi
-- **Pencatatan Absensi**:Kehadiran pengunjung
-- **Tracking Kehadiran**: Monitoring anggota yang berkunjung
-
----
-
-<img width="800" alt="Screenshot 2025-09-01 013648" src="https://github.com/user-attachments/assets/a2bb2607-35eb-424d-be05-e3fd4e247f7e" />
-
----
-
-### 📊 Pelaporan & Analytics
-- **Dashboard Analytics**: Overview statistik perpustakaan
-- **Transaction Reports**: Laporan transaksi (peminjaman dan absensi pengunjung)
-- **Member Statistics**: Statistik aktivitas anggota
 
 ---
 
@@ -146,10 +87,9 @@ sebelum instalasi, pastikan XAMPP sudah terinstall dengan baik sesuai dengan per
 cp env .env
 # Edit .env sesuai kebutuhan
 
-# 5.Akses `http://localhost/perpus-smk/`
-```
+# 5.Akses `http://localhost/perpus-smk/'
 
----
+```
 
 ## ⚙️ Konfigurasi
 
@@ -209,6 +149,65 @@ POST   /loans/return     # Return book
 POST   /loans/renew      # Renew loan
 GET    /loans/overdue    # Get overdue loans
 ```
+
+## ✨ Fitur Utama
+
+### 📖 Manajemen Buku
+- **CRUD Buku**: Tambah, edit dan hapus data buku
+- **Kategorisasi**: Organisasi buku berdasarkan kategori dan genre
+- **ISBN Management**: Validasi dan tracking ISBN
+- **Stock Management**: Kelola jumlah buku
+  
+---
+
+<img width="800" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
+
+---
+
+<img width="800" alt="Screenshot 2025-08-31 215853" src="https://github.com/user-attachments/assets/ed2b0c69-47f2-4f88-a48a-b7155fc6fd0f" />
+
+---
+
+### 👥 Manajemen Anggota
+- **Registrasi Anggota**: Pendaftaran anggota baru
+- **Status Keanggotaan**: Monitoring status aktif/non-aktifn
+
+---
+
+<img width="800" alt="Screenshot 2025-09-01 014015" src="https://github.com/user-attachments/assets/044c45d0-4fc9-4678-827b-c2cdb7547ef2" />
+
+---
+
+### 🔄 Sistem Peminjaman
+- **Checkout Books**: Proses peminjaman buku
+- **Return Books**: Proses pengembalian buku
+
+---
+
+<img width="800" alt="Screenshot 2025-09-01 011726" src="https://github.com/user-attachments/assets/e07dae38-fd07-49c7-8570-146604ef7ef0" />
+
+---
+
+<img width="800" alt="Screenshot 2025-09-01 012320" src="https://github.com/user-attachments/assets/681127ea-556f-46c3-ba33-6c44b32618e6" />
+
+---
+
+### 👥 Sistem Absensi
+- **Pencatatan Absensi**:Kehadiran pengunjung
+- **Tracking Kehadiran**: Monitoring anggota yang berkunjung
+
+---
+
+<img width="800" alt="Screenshot 2025-09-01 013648" src="https://github.com/user-attachments/assets/a2bb2607-35eb-424d-be05-e3fd4e247f7e" />
+
+---
+
+### 📊 Pelaporan & Analytics
+- **Dashboard Analytics**: Overview statistik perpustakaan
+- **Transaction Reports**: Laporan transaksi (peminjaman dan absensi pengunjung)
+- **Member Statistics**: Statistik aktivitas anggota
+
+---
 
 ## 👤 User Roles
 
