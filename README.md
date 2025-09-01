@@ -42,8 +42,12 @@
 - **ISBN Management**: Validasi dan tracking ISBN
 - **Stock Management**: Kelola jumlah eksemplar buku
 
+<img width="1920" height="963" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
+
+<img width="1920" height="962" alt="Screenshot 2025-08-31 215853" src="https://github.com/user-attachments/assets/ed2b0c69-47f2-4f88-a48a-b7155fc6fd0f" />
+
 ### 👥 Manajemen Anggota
-- **Registrasi Anggota**: Pendaftaran anggota barul
+- **Registrasi Anggota**: Pendaftaran anggota baru
 - **Status Tracking**: Monitor status keanggotaan
 
 ### 🔄 Sistem Peminjaman
@@ -51,6 +55,14 @@
 - **Return Books**: Proses pengembalian buku
 - **Queue Management**: Antrian peminjaman buku populer
 
+<img width="1920" height="960" alt="Screenshot 2025-09-01 011726" src="https://github.com/user-attachments/assets/e07dae38-fd07-49c7-8570-146604ef7ef0" />
+
+<img width="1920" height="962" alt="Screenshot 2025-09-01 012320" src="https://github.com/user-attachments/assets/681127ea-556f-46c3-ba33-6c44b32618e6" />
+
+### 👥 Sistem Absensi
+- **Catat Absensi**: Proses pencatatan absensi anggota
+- **Status Tracking**: Monitor status kehadiran anggota yang berkunjung di perpustakaan
+- 
 ### 📊 Pelaporan & Analytics
 - **Dashboard Analytics**: Overview statistik perpustakaan
 - **Transaction Reports**: Laporan transaksi (peminjaman dan absensi pengunjung)
