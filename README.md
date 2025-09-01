@@ -25,7 +25,7 @@
 **Perpus Berbudi** adalah sistem informasi perpustakaan berbasis web yang dikembangkan menggunakan framework CodeIgniter 4. Sistem ini dirancang untuk mengelola operasional perpustakaan secara digital, mulai dari manajemen buku, anggota, peminjaman, hingga absensi pengunjung.
 
 ### Target Pengguna
-- **Pustakawan/Librarian**: Mengelola koleksi dan transaksi
+- **Pustakawan/Librarian**: Mengelola Data buku, Anggota dan transaksi seperti peminjakman dan absensi pengunjung
 
 ### Keunggulan
 - Interface yang user-friendly dan responsif
