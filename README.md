@@ -22,10 +22,11 @@
 
 ## 🎯 Overview
 
-**Perpus Berbudi** adalah sistem informasi perpustakaan berbasis web yang dikembangkan menggunakan framework CodeIgniter 4. Sistem ini dirancang untuk mengelola operasional perpustakaan secara digital, mulai dari manajemen buku, anggota, peminjaman, hingga absensi pengunjung.
+**Perpus Berbudi** adalah sistem informasi perpustakaan berbasis web yang dikembangkan menggunakan CodeIgniter 4.
+Sistem ini dirancang untuk mempermudah pengelolaan operasional perpustakaan secara digital, mulai dari manajemen buku, anggota, peminjaman, hingga absensi pengunjung.
 
 ### Target Pengguna
-- **Pustakawan/Librarian**: Mengelola Data buku, Anggota dan transaksi seperti peminjakman dan absensi pengunjung
+- **Pustakawan/Librarian**: Mengelola data buku, anggota, transaksi peminjaman, pengembalian, serta absensi pengunjung.
 
 ### Keunggulan
 - Interface yang user-friendly dan responsif
@@ -40,29 +41,33 @@
 - **CRUD Buku**: Tambah, edit dan hapus data buku
 - **Kategorisasi**: Organisasi buku berdasarkan kategori dan genre
 - **ISBN Management**: Validasi dan tracking ISBN
-- **Stock Management**: Kelola jumlah eksemplar buku
-
-<img width="1920" height="963" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
-
-<img width="1920" height="962" alt="Screenshot 2025-08-31 215853" src="https://github.com/user-attachments/assets/ed2b0c69-47f2-4f88-a48a-b7155fc6fd0f" />
-
+- **Stock Management**: Kelola jumlah buku
+---
+<img width="800" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
+---
+<img width="800" alt="Screenshot 2025-08-31 215853" src="https://github.com/user-attachments/assets/ed2b0c69-47f2-4f88-a48a-b7155fc6fd0f" />
+---
 ### 👥 Manajemen Anggota
 - **Registrasi Anggota**: Pendaftaran anggota baru
-- **Status Tracking**: Monitor status keanggotaan
-
+- **Status Keanggotaan**: Monitoring status aktif/non-aktifn
+---
+<img width="800" alt="Screenshot 2025-09-01 014015" src="https://github.com/user-attachments/assets/044c45d0-4fc9-4678-827b-c2cdb7547ef2" />
+---
 ### 🔄 Sistem Peminjaman
 - **Checkout Books**: Proses peminjaman buku
 - **Return Books**: Proses pengembalian buku
-- **Queue Management**: Antrian peminjaman buku populer
-
-<img width="1920" height="960" alt="Screenshot 2025-09-01 011726" src="https://github.com/user-attachments/assets/e07dae38-fd07-49c7-8570-146604ef7ef0" />
-
-<img width="1920" height="962" alt="Screenshot 2025-09-01 012320" src="https://github.com/user-attachments/assets/681127ea-556f-46c3-ba33-6c44b32618e6" />
-
+---
+<img width="800" alt="Screenshot 2025-09-01 011726" src="https://github.com/user-attachments/assets/e07dae38-fd07-49c7-8570-146604ef7ef0" />
+---
+<img width="800" alt="Screenshot 2025-09-01 012320" src="https://github.com/user-attachments/assets/681127ea-556f-46c3-ba33-6c44b32618e6" />
+---
 ### 👥 Sistem Absensi
-- **Catat Absensi**: Proses pencatatan absensi anggota
-- **Status Tracking**: Monitor status kehadiran anggota yang berkunjung di perpustakaan
-- 
+- **Pencatatan Absensi**:Kehadiran pengunjung
+- **Tracking Kehadiran**: Monitoring anggota yang berkunjung
+---
+<img width="800" alt="Screenshot 2025-09-01 013648" src="https://github.com/user-attachments/assets/a2bb2607-35eb-424d-be05-e3fd4e247f7e" />
+---
+
 ### 📊 Pelaporan & Analytics
 - **Dashboard Analytics**: Overview statistik perpustakaan
 - **Transaction Reports**: Laporan transaksi (peminjaman dan absensi pengunjung)
