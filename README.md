@@ -43,28 +43,37 @@ Sistem ini dirancang untuk mempermudah pengelolaan operasional perpustakaan seca
 - **ISBN Management**: Validasi dan tracking ISBN
 - **Stock Management**: Kelola jumlah buku
 ---
+
 <img width="800" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
 ---
+
 <img width="800" alt="Screenshot 2025-08-31 215853" src="https://github.com/user-attachments/assets/ed2b0c69-47f2-4f88-a48a-b7155fc6fd0f" />
 ---
+
 ### 👥 Manajemen Anggota
 - **Registrasi Anggota**: Pendaftaran anggota baru
 - **Status Keanggotaan**: Monitoring status aktif/non-aktifn
 ---
+
 <img width="800" alt="Screenshot 2025-09-01 014015" src="https://github.com/user-attachments/assets/044c45d0-4fc9-4678-827b-c2cdb7547ef2" />
 ---
+
 ### 🔄 Sistem Peminjaman
 - **Checkout Books**: Proses peminjaman buku
 - **Return Books**: Proses pengembalian buku
 ---
+
 <img width="800" alt="Screenshot 2025-09-01 011726" src="https://github.com/user-attachments/assets/e07dae38-fd07-49c7-8570-146604ef7ef0" />
 ---
+
 <img width="800" alt="Screenshot 2025-09-01 012320" src="https://github.com/user-attachments/assets/681127ea-556f-46c3-ba33-6c44b32618e6" />
 ---
+
 ### 👥 Sistem Absensi
 - **Pencatatan Absensi**:Kehadiran pengunjung
 - **Tracking Kehadiran**: Monitoring anggota yang berkunjung
 ---
+
 <img width="800" alt="Screenshot 2025-09-01 013648" src="https://github.com/user-attachments/assets/a2bb2607-35eb-424d-be05-e3fd4e247f7e" />
 ---
 
