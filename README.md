@@ -70,16 +70,19 @@ Sistem ini dirancang untuk mempermudah pengelolaan operasional perpustakaan seca
 sebelum instalasi, pastikan XAMPP sudah terinstall dengan baik sesuai dengan perangkat yang digunakan
 # 1. Clone/Download project
 # - lakukan "git clone https://github.com/YoriCode11/perpus-berbudi.git" jika mengunakan terminal git
-# - Atau dapat dilakukan dengan cara mendownload project dalam bentuk zip, jika download sudah selesai silahkan ekstrak file project sistem perpustakaan
+# - Atau dapat dilakukan dengan cara mendownload project dalam bentuk zip,
+  jika download sudah selesai silahkan ekstrak file project sistem perpustakaan
 
 # 2. Pindah ke htdocs XAMPP
 # - mv perpus-berbudi C:\xampp\htdocs\  (jika menggunakan git)
-# - Atau jika sebelumnya pada langkah 1 memilih melakukan download dalam bentuk zip, maka pindahkan file project ke direktori C:\xampp\htdocs
+# - Atau jika sebelumnya pada langkah 1 memilih melakukan download dalam bentuk zip,
+  maka pindahkan file project ke direktori C:\xampp\htdocs
 
 # 3. Setup database
 # - Buka file project yang sudah diekstrak tersebut dan ekstrak file dump.zip ( file sql)
 # - Jalankan XAMPP kemudian klik "start" Apache dan MySQL
-# - Buka phpMyAdmin lewat browser dengan link : http://localhost/phpmyadmin/index.php atau dapat dilakukan dengan klik "admin pada panel XAMPP
+# - Buka phpMyAdmin lewat browser dengan link : http://localhost/phpmyadmin/index.php atau
+  dapat dilakukan dengan klik "admin pada panel XAMPP
 # - Buat database 'perpusdb' atau bisa di sesuaikan dengan kebutuhan
 # - Import file SQL via phpMyAdmin dan pastikan bagian "check foreignkey" di non-aktifkan
 
