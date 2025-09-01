@@ -88,15 +88,9 @@
 - Minimal 512MB RAM
 - 1GB disk space
 
-### Instalasi Otomatis
-1. Download installer package
-2. Jalankan `INSTALL.bat` sebagai Administrator
-3. Jalankan `database_install.bat`
-4. Akses `http://localhost/perpus-berbudi/`
-
 ### Instalasi 
 ```bash
-sebelum instalasi, pastikan XAMPP sudah terinstall dengan baik sesuai dengan perangkat
+sebelum instalasi, pastikan XAMPP sudah terinstall dengan baik sesuai dengan perangkat yang digunakan
 # 1. Clone/Download project
 # - lakukan "git clone https://github.com/YoriCode11/perpus-berbudi.git" jika mengunakan terminal git
 # - Atau dapat dilakukan dengan cara mendownload project dalam bentuk zip, jika download sudah selesai silahkan ekstrak file project sistem perpustakaan
