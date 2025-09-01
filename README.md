@@ -97,24 +97,29 @@
 3. Jalankan `database_install.bat`
 4. Akses `http://localhost/perpus-berbudi/`
 
-### Instalasi Manual
+### Instalasi 
 ```bash
+sebelum instalasi, pastikan XAMPP sudah terinstall dengan baik sesuai dengan perangkat
 # 1. Clone/Download project
-git clone https://github.com/YoriCode11/perpus-berbudi.git
+# - lakukan "git clone https://github.com/YoriCode11/perpus-berbudi.git" jika mengunakan terminal git
+# - Atau dapat dilakukan dengan cara mendownload project dalam bentuk zip, jika download sudah selesai silahkan ekstrak file project sistem perpustakaan
 
 # 2. Pindah ke htdocs XAMPP
-mv perpus-berbudi C:\xampp\htdocs\
+# - mv perpus-berbudi C:\xampp\htdocs\  (jika menggunakan git)
+# - Atau jika sebelumnya pada langkah 1 memilih melakukan download dalam bentuk zip, maka pindahkan file project ke direktori C:\xampp\htdocs
 
 # 3. Setup database
-# - Buat database 'perpus_berbudi'
-# - Import file SQL via phpMyAdmin
+# - Buka file project yang sudah diekstrak tersebut dan ekstrak file dump.zip ( file sql)
+# - Jalankan XAMPP kemudian klik "start" Apache dan MySQL
+# - Buka phpMyAdmin lewat browser dengan link : http://localhost/phpmyadmin/index.php atau dapat dilakukan dengan klik "admin pada panel XAMPP
+# - Buat database 'perpusdb' atau bisa di sesuaikan dengan kebutuhan
+# - Import file SQL via phpMyAdmin dan pastikan bagian "check foreignkey" di non-aktifkan
 
 # 4. Konfigurasi environment
 cp env .env
 # Edit .env sesuai kebutuhan
 
-# 5. Set permissions (Windows)
-# Pastikan folder writable/ dapat ditulis
+# 5.Akses `http://localhost/perpus-smk/`
 ```
 
 ---
