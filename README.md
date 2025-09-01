@@ -13,10 +13,10 @@
 5. [API Endpoints](#-api-endpoints)
 6. [User Roles](#-user-roles)
 7. [Fitur Detail](#-fitur-detail)
-11. [Troubleshooting](#-troubleshooting)
-12. [Development](#-development-guide)
-13. [Deployment](#-deployment)
-14. [Maintenance](#-maintenance)
+8. [Troubleshooting](#-troubleshooting)
+9. [Development](#-development-guide)
+10. [Deployment](#-deployment)
+11. [Maintenance](#-maintenance)
 
 ---
 
