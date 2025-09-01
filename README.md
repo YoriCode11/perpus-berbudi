@@ -1,68 +1,406 @@
-# CodeIgniter 4 Application Starter
+# 📚 PERPUS BERBUDI - Dokumentasi Lengkap
 
-## What is CodeIgniter?
+> Sistem Informasi Perpustakaan berbasis CodeIgniter 4
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 📋 Daftar Isi
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+1. [Overview](#-overview)
+2. [Fitur Utama](#-fitur-utama)
+3. [Teknologi](#-teknologi-yang-digunakan)
+4. [Instalasi](#-instalasi)
+5. [Konfigurasi](#-konfigurasi)
+6. [Struktur Project](#-struktur-project)
+7. [Database Schema](#-database-schema)
+8. [API Endpoints](#-api-endpoints)
+9. [User Roles](#-user-roles)
+10. [Fitur Detail](#-fitur-detail)
+11. [Troubleshooting](#-troubleshooting)
+12. [Development](#-development-guide)
+13. [Deployment](#-deployment)
+14. [Maintenance](#-maintenance)
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+---
 
-## Installation & updates
+## 🎯 Overview
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+**Perpus Berbudi** adalah sistem informasi perpustakaan berbasis web yang dikembangkan menggunakan framework CodeIgniter 4. Sistem ini dirancang untuk mengelola operasional perpustakaan secara digital, mulai dari manajemen buku, anggota, peminjaman, hingga absensi pengunjung.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### Target Pengguna
+- **Pustakawan/Librarian**: Mengelola koleksi dan transaksi
 
-## Setup
+### Keunggulan
+- Interface yang user-friendly dan responsif
+- Sistem keamanan berlapis
+- Laporan dan analitik yang komprehensif
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+---
 
-## Important Change with index.php
+## ✨ Fitur Utama
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### 📖 Manajemen Buku
+- **CRUD Buku**: Tambah, edit dan hapus data buku
+- **Kategorisasi**: Organisasi buku berdasarkan kategori dan genre
+- **ISBN Management**: Validasi dan tracking ISBN
+- **Stock Management**: Kelola jumlah eksemplar buku
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### 👥 Manajemen Anggota
+- **Registrasi Anggota**: Pendaftaran anggota barul
+- **Status Tracking**: Monitor status keanggotaan
 
-**Please** read the user guide for a better explanation of how CI4 works!
+### 🔄 Sistem Peminjaman
+- **Checkout Books**: Proses peminjaman buku
+- **Return Books**: Proses pengembalian buku
+- **Queue Management**: Antrian peminjaman buku populer
 
-## Repository Management
+### 📊 Pelaporan & Analytics
+- **Dashboard Analytics**: Overview statistik perpustakaan
+- **Transaction Reports**: Laporan transaksi (peminjaman dan absensi pengunjung)
+- **Member Statistics**: Statistik aktivitas anggota
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+---
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## 🛠️ Teknologi yang Digunakan
 
-## Server Requirements
+### Backend
+- **Framework**: CodeIgniter 4.x
+- **Language**: PHP 7.4+
+- **Database**: MySQL 5.7+ / MariaDB
+- **Web Server**: Apache 2.4+ (XAMPP)
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+### Frontend
+- **CSS Framework**: Bootstrap 5.x
+- **JavaScript**: Vanilla JS + jQuery 3.x
+- **Icons**: Font Awesome 6.x / Lucide Icons
+- **Charts**: Chart.js / ApexCharts
+- **DataTables**: Advanced table management
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+### Tools & Libraries
+- **Email**: CodeIgniter Email Library
+- **Validation**: CodeIgniter Validation
+- **Security**: CodeIgniter Security & Encryption
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+---
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## 🚀 Instalasi
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+### Prerequisites
+- XAMPP (Apache + MySQL + PHP 7.4+)
+- Web browser modern (Chrome, Firefox, Edge)
+- Minimal 512MB RAM
+- 1GB disk space
+
+### Instalasi Otomatis
+1. Download installer package
+2. Jalankan `INSTALL.bat` sebagai Administrator
+3. Jalankan `database_install.bat`
+4. Akses `http://localhost/perpus-berbudi/`
+
+### Instalasi Manual
+```bash
+# 1. Clone/Download project
+git clone https://github.com/YoriCode11/perpus-berbudi.git
+
+# 2. Pindah ke htdocs XAMPP
+mv perpus-berbudi C:\xampp\htdocs\
+
+# 3. Setup database
+# - Buat database 'perpus_berbudi'
+# - Import file SQL via phpMyAdmin
+
+# 4. Konfigurasi environment
+cp env .env
+# Edit .env sesuai kebutuhan
+
+# 5. Set permissions (Windows)
+# Pastikan folder writable/ dapat ditulis
+```
+
+---
+
+## ⚙️ Konfigurasi
+
+### Environment Variables (.env)
+```env
+# Basic Configuration
+CI_ENVIRONMENT = development
+app.baseURL = 'http://localhost/perpus-berbudi/'
+app.indexPage = ''
+
+# Database
+database.default.hostname = localhost
+database.default.database = perpus_berbudi
+database.default.username = root
+database.default.password = 
+
+# Security
+encryption.key = [generate dengan php spark key:generate]
+
+# Custom Settings
+perpus.maxBooksPerMember = 3
+perpus.loanDurationDays = 14
+perpus.finePerDay = 1000
+```
+
+## 🔗 API Endpoints
+
+### Authentication
+```
+POST /auth/login          # User login
+POST /auth/logout         # User logout
+POST /auth/register       # Member registration
+```
+
+### Books Management
+```
+GET    /books             # List all books
+POST   /books             # Add new book
+PUT    /books/{id}        # Update book
+DELETE /books/{id}        # Delete book
+GET    /books/search      # Search books
+```
+
+### Members Management
+```
+GET    /members           # List all members
+POST   /members           # Add new member
+PUT    /members/{id}      # Update member
+DELETE /members/{id}      # Delete member
+```
+
+### Loans Management
+```
+GET    /loans            # List all loans
+POST   /loans/checkout   # Checkout book
+POST   /loans/return     # Return book
+POST   /loans/renew      # Renew loan
+GET    /loans/overdue    # Get overdue loans
+```
+
+## 👤 User Roles
+
+### 📚 Librarian/Pustakawan
+**Fokus pada Operasional Perpustakaan**
+
+**Permissions:**
+- Manajemen buku dan kategori
+- Proses peminjaman dan pengembalian
+- Manajemen anggota
+- Manajemen Absensi pengunjung
+
+---
+
+## 🎨 Fitur Detail
+
+### Dashboard Analytics
+- **Real-time Statistics**: Jumlah buku, anggota, peminjaman aktif
+- **Quick Actions**: Shortcut untuk aksi cepat
+- **Recent Activities**: Log aktivitas terbaru
+
+### Advanced Search
+- **Multi-criteria Search**: Pencarian berdasarkan judul, penulis, ISBN
+- **Filter Options**: Filter berdasarkan kategori, tahun, availability
+- **Sort Options**: Sorting berdasarkan berbagai parameter
+- **Search History**: Riwayat pencarian user
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### 1. "Page Not Found" Error
+**Symptoms:** Error 404 saat akses aplikasi
+**Causes:**
+- .htaccess tidak ada atau salah konfigurasi
+- mod_rewrite tidak aktif di Apache
+- Folder struktur tidak sesuai
+
+**Solutions:**
+```bash
+# Check .htaccess files
+# Pastikan ada di root dan public/ folder
+
+# Enable mod_rewrite di httpd.conf
+LoadModule rewrite_module modules/mod_rewrite.so
+
+# Restart Apache
+```
+
+#### 2. Database Connection Error
+**Symptoms:** "Unable to connect to database"
+**Causes:**
+- MySQL service tidak jalan
+- Database belum dibuat
+- Kredensial database salah
+
+**Solutions:**
+```sql
+-- Start MySQL di XAMPP Control Panel
+-- Buat database:
+CREATE DATABASE perpusdb;
+
+-- Check credentials di .env file
+```
+
+#### 3. Blank White Page
+**Symptoms:** Halaman kosong tanpa error
+**Causes:**
+- PHP fatal error
+- Permission issue pada folder writable/
+- Memory limit insufficient
+
+**Solutions:**
+```php
+// Enable error display di .env
+CI_ENVIRONMENT = development
+
+// Check error log
+tail -f writable/logs/log-*.php
+
+// Fix permissions
+chmod 755 writable/ -R
+```
+
+#### 4. CSS/JS Not Loading
+**Symptoms:** Layout berantakan, JavaScript tidak bekerja
+**Causes:**
+- Base URL salah
+- Asset path tidak tepat
+- .htaccess blocking static files
+
+**Solutions:**
+```php
+// Check baseURL di .env
+app.baseURL = 'http://localhost/perpus-berbudi/'
+
+// Check asset paths di view files
+echo base_url('assets/css/style.css');
+```
+
+---
+
+## 💻 Development Guide
+
+### Coding Standards
+- **PSR-12**: PHP coding standard
+- **Camel Case**: Untuk method dan variable names
+- **Pascal Case**: Untuk class names
+- **Snake Case**: Untuk database columns
+- **Kebab Case**: Untuk CSS classes
+
+### Git Workflow
+```bash
+# Feature development
+git checkout -b feature/new-feature
+git add .
+git commit -m "feat: add new feature"
+git push origin feature/new-feature
+
+# Bug fixes
+git checkout -b fix/bug-description
+git commit -m "fix: resolve specific issue"
+
+# Release
+git checkout main
+git merge --no-ff feature/new-feature
+git tag v1.0.0
+```
+
+## 🚀 Deployment
+
+### Production Checklist
+- [ ] Set `CI_ENVIRONMENT = production` di .env
+- [ ] Generate strong encryption key
+- [ ] Update database credentials
+- [ ] Enable HTTPS (forceGlobalSecureRequests = true)
+- [ ] Setup proper file permissions
+- [ ] Configure backup schedule
+- [ ] Setup monitoring dan logging
+- [ ] Test all functionality
+- [ ] Setup SSL certificate
+- [ ] Configure firewall rules
+
+### Server Requirements
+```
+PHP: 7.4+ (Recommended: 8.1+)
+MySQL: 5.7+ or MariaDB 10.3+
+Apache: 2.4+ with mod_rewrite
+Memory: 512MB minimum (1GB recommended)
+Storage: 5GB minimum
+```
+
+### Performance Optimization
+```php
+// Enable caching
+cache.handler = 'file'
+cache.ttl = 3600
+
+// Database optimization
+// Add indexes for frequent queries
+ALTER TABLE books ADD INDEX idx_title (title);
+ALTER TABLE loans ADD INDEX idx_member_status (member_id, status);
+
+// Enable compression
+// Add to .htaccess
+AddOutputFilterByType DEFLATE text/html text/css text/js
+```
+
+---
+
+## 🔧 Maintenance
+
+### Regular Tasks
+- **Daily**: Check error logs, monitor disk space
+- **Weekly**: Database backup, update security patches
+- **Monthly**: Performance review, user cleanup
+- **Quarterly**: Full system audit, dependency updates
+
+### Backup Strategy
+```bash
+# Database backup
+mysqldump -u root -p perpus_berbudi > backup_$(date +%Y%m%d).sql
+
+# File backup
+tar -czf backup_files_$(date +%Y%m%d).tar.gz /path/to/project
+
+# Automated backup script
+# Setup cron job untuk backup otomatis
+```
+
+### Monitoring
+- **Error Logs**: writable/logs/
+- **Access Logs**: Apache access.log
+- **Performance**: Response time monitoring
+- **Security**: Failed login attempts
+- **Database**: Query performance, table sizes
+
+---
+
+## 📞 Support & Contact
+
+### Technical Support
+- **Developer**: YoriCode11
+- **Email**: [your-email@example.com]
+- **GitHub**: https://github.com/YoriCode11/perpus-berbudi
+  
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **CodeIgniter Team** untuk framework yang luar biasa
+- **Bootstrap Team** untuk CSS framework
+- **XAMPP Team** untuk development environment
+- **Community Contributors** yang telah membantu pengembangan
+
+---
+
+*Last updated: September 2025*
+*Version: 1.0.0*
