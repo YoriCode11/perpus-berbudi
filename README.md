@@ -1,4 +1,4 @@
-# 📚 PERPUS BERBUDI - Dokumentasi Lengkap
+# 📚 SISTEM INFORMASI PERPUSTAKAAN
 
 > Sistem Informasi Perpustakaan berbasis CodeIgniter 4
 
