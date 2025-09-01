@@ -97,12 +97,12 @@ cp env .env
 ```env
 # Basic Configuration
 CI_ENVIRONMENT = development
-app.baseURL = 'http://localhost/perpus-berbudi/'
+app.baseURL = 'http://localhost/perpus-smk/'
 app.indexPage = ''
 
 # Database
 database.default.hostname = localhost
-database.default.database = perpus_berbudi
+database.default.database = perpusdb
 database.default.username = root
 database.default.password = 
 
