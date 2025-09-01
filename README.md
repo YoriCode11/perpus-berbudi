@@ -160,7 +160,7 @@ GET    /loans/overdue    # Get overdue loans
   
 ---
 
-<img align="center" width="800" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
+<img width="800" alt="Screenshot 2025-08-31 214605" src="https://github.com/user-attachments/assets/c5f5a8a1-1452-465f-9aaa-81735275c912" />
 
 ---
 
