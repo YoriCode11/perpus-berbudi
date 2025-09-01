@@ -413,7 +413,6 @@ tar -czf backup_files_$(date +%Y%m%d).tar.gz /path/to/project
 
 ### Technical Support
 - **Developer**: YoriCode11
-- **Email**: [your-email@example.com]
 - **GitHub**: https://github.com/YoriCode11/perpus-berbudi
   
 ---
